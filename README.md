@@ -2,6 +2,40 @@
 
 This is the upgraded capstone prototype for **2026-S2-37**.
 
+## Instrustions
+git clone https://github.com/Mac382005/harbison-food-waste-capstone.git
+- Then:
+cd harbison-food-waste-capstone
+
+- Create your own virtual environment:
+python -m venv .venv
+
+- Activate it:
+.\.venv\Scripts\Activate.ps1
+
+- Install all project packages:
+pip install -r requirements.txt
+
+- Then run the app:
+streamlit run app.py
+
+- If everything is correct, they should now have the same prototype you have.
+- Before they change anything:
+git checkout main
+git pull origin main
+
+- Then create your own branch.
+- When finish something run:
+git add .
+git commit -m "Improve forecasting page"
+git push -u origin feature/forecasting
+
+- Then go to GitHub and create a Pull Request.
+- After something is merged, everyone updates their own copy:
+git checkout main
+git pull origin main
+
+- Then they start the next task from the new version.
 ## Major V2 upgrades
 
 - Real multi-page Streamlit navigation.
