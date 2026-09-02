@@ -128,10 +128,6 @@ data/food_waste_v2.db
 4. Open **Dashboard**.
 5. Test the other roles by signing out and logging in with their demo accounts.
 
-## Why V2 uses a new database file
-
-V2 uses `food_waste_v2.db` so your working V1 database is not damaged. You can compare both prototypes safely.
-
 ## Important limitations
 
 - This is still a capstone prototype, not production security.
