@@ -7,25 +7,24 @@ __pycache__/
 .venv/
 venv/
 
-# Environment variables / secrets
+# Secrets
 .env
 *.env
 
 # Local databases
-data/*.db
+/data/*.db
 *.sqlite
 *.sqlite3
 
-# Real / sensitive project data
-data/raw/
-data/processed/
-real_data/
+# Sponsor / private operational data
+/data/private/
+/data/raw/
+/data/import/
+/real_data/
 harbison_data/
 
-# IDE files
+# IDE / OS
 .idea/
 .vscode/
-
-# OS files
 .DS_Store
 Thumbs.db

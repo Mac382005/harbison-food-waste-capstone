@@ -172,6 +172,79 @@ CREATE TABLE IF NOT EXISTS audit_log (
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
+-- Sponsor-provided reference data is kept separate from operational waste data.
+-- These tables can be safely rebuilt from the structured import files.
+
+CREATE TABLE IF NOT EXISTS supplier_products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category TEXT,
+    product_name TEXT NOT NULL UNIQUE,
+    pfd_price REAL,
+    superior_foods_price REAL,
+    sfd_price REAL,
+    source_page INTEGER,
+    source_document TEXT,
+    imported_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sponsor_recipes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    food_item_id INTEGER NOT NULL UNIQUE,
+    recipe_name TEXT NOT NULL UNIQUE,
+    display_name TEXT NOT NULL,
+    texture TEXT,
+    serves INTEGER NOT NULL,
+    serving_size_g REAL NOT NULL,
+    yield_loss_pct REAL,
+    allergens TEXT,
+    dietary_notes TEXT,
+    source_page INTEGER,
+    source_document TEXT,
+    imported_at TEXT NOT NULL,
+    FOREIGN KEY(food_item_id) REFERENCES food_items(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS sponsor_recipe_ingredients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sponsor_recipe_id INTEGER NOT NULL,
+    line_order INTEGER NOT NULL,
+    quantity REAL,
+    unit TEXT,
+    ingredient_name TEXT NOT NULL,
+    source_document TEXT,
+    UNIQUE(sponsor_recipe_id, line_order),
+    FOREIGN KEY(sponsor_recipe_id) REFERENCES sponsor_recipes(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS harbison_menu_schedule (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    menu_variant TEXT NOT NULL,
+    week_number INTEGER NOT NULL CHECK(week_number BETWEEN 1 AND 4),
+    day_of_week INTEGER NOT NULL CHECK(day_of_week BETWEEN 0 AND 6),
+    day_name TEXT,
+    meal_service TEXT NOT NULL,
+    component TEXT NOT NULL,
+    menu_label TEXT NOT NULL,
+    food_item_id INTEGER NOT NULL,
+    linked_recipe_name TEXT,
+    linked_recipe_food_item_id INTEGER,
+    category TEXT,
+    source_sheet TEXT,
+    source_document TEXT,
+    imported_at TEXT NOT NULL,
+    UNIQUE(menu_variant,week_number,day_of_week,meal_service,component,menu_label),
+    FOREIGN KEY(food_item_id) REFERENCES food_items(id),
+    FOREIGN KEY(linked_recipe_food_item_id) REFERENCES food_items(id)
+);
+
+CREATE TABLE IF NOT EXISTS menu_item_recipe_links (
+    menu_food_item_id INTEGER PRIMARY KEY,
+    recipe_food_item_id INTEGER NOT NULL,
+    FOREIGN KEY(menu_food_item_id) REFERENCES food_items(id) ON DELETE CASCADE,
+    FOREIGN KEY(recipe_food_item_id) REFERENCES food_items(id) ON DELETE CASCADE
+);
+
 CREATE INDEX IF NOT EXISTS idx_tx_date ON transactions(service_date);
 CREATE INDEX IF NOT EXISTS idx_tx_food ON transactions(food_item_id);
 CREATE INDEX IF NOT EXISTS idx_price_effective ON ingredient_price_history(ingredient_id,effective_date);
@@ -185,6 +258,11 @@ def init_db():
         c.execute(
             "INSERT OR IGNORE INTO menu_settings(id,cycle_start_date,cycle_weeks) VALUES(1,'2026-08-03',4)"
         )
+        tx_cols = {r[1] for r in c.execute("PRAGMA table_info(transactions)").fetchall()}
+        if "menu_variant" not in tx_cols:
+            c.execute("ALTER TABLE transactions ADD COLUMN menu_variant TEXT")
+        if "menu_component" not in tx_cols:
+            c.execute("ALTER TABLE transactions ADD COLUMN menu_component TEXT")
 
 
 def fetchall(sql: str, params=()):
