@@ -10,6 +10,7 @@ def apply_styles():
           --fw-accent2: #2f7e9d;
           --fw-soft: #eef7f3;
           --fw-border: rgba(80,90,100,.18);
+          --fw-text-soft: rgba(34, 42, 53, .72);
         }
         .block-container { padding-top: 1.2rem; padding-bottom: 3rem; }
         .hero {
@@ -41,10 +42,57 @@ def apply_styles():
           background: rgba(255,255,255,.02);
         }
         div[data-testid="stForm"] { border-radius: 16px; }
+        .legend-wrap {
+          display:flex;
+          flex-wrap:wrap;
+          gap:10px;
+          margin: 6px 0 14px 0;
+        }
+        .legend-chip {
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          padding:8px 12px;
+          border:1px solid var(--fw-border);
+          border-radius:999px;
+          background:#fff;
+          font-size:0.88rem;
+        }
+        .legend-dot {
+          width:12px;
+          height:12px;
+          border-radius:50%;
+          display:inline-block;
+        }
+        .section-note {
+          color: var(--fw-text-soft);
+          font-size: 0.92rem;
+          margin-top: -4px;
+          margin-bottom: 10px;
+        }
+        .source-badge-row {
+          display:flex;
+          flex-wrap:wrap;
+          gap:8px;
+          margin: 2px 0 12px 0;
+        }
+        .source-badge {
+          display:inline-block;
+          padding: 6px 10px;
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 600;
+          border: 1px solid transparent;
+        }
+        .source-green { background:#e9f8ef; color:#1b6e39; border-color:#b9e7c9; }
+        .source-blue { background:#eaf4ff; color:#1252a3; border-color:#bfd8ff; }
+        .source-orange { background:#fff3e8; color:#9a4d00; border-color:#ffd4aa; }
+        .source-purple { background:#f4ebff; color:#6e34b8; border-color:#dcc7ff; }
         </style>
         """,
         unsafe_allow_html=True,
     )
+
 
 
 def page_header(kicker: str, title: str, subtitle: str):
@@ -58,3 +106,20 @@ def page_header(kicker: str, title: str, subtitle: str):
         """,
         unsafe_allow_html=True,
     )
+
+
+
+def render_legend(items: list[tuple[str, str]]):
+    chips = "".join(
+        f'<div class="legend-chip"><span class="legend-dot" style="background:{color}"></span>{label}</div>'
+        for label, color in items
+    )
+    st.markdown(f'<div class="legend-wrap">{chips}</div>', unsafe_allow_html=True)
+
+
+
+def render_source_badges(items: list[tuple[str, str]]):
+    badges = "".join(
+        f'<span class="source-badge {css_class}">{label}</span>' for label, css_class in items
+    )
+    st.markdown(f'<div class="source-badge-row">{badges}</div>', unsafe_allow_html=True)

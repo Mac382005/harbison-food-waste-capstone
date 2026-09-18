@@ -4,13 +4,14 @@ import pandas as pd
 from .db import connection
 
 
-def transactions_df():
-    q = """
+def transactions_df(include_demo: bool = False):
+    where = "" if include_demo else "WHERE t.is_demo=0"
+    q = f"""
     SELECT t.id,t.created_at,t.service_date,f.name facility,sa.name service_area,m.name meal,
            fi.name food_item,fc.name category,t.waste_type,t.prepared_kg,t.served_kg,
            t.waste_kg,t.waste_percentage,t.cost_per_kg_snapshot,t.waste_cost,
            t.waste_reason,t.resident_count,t.notes,t.is_demo,
-           COALESCE(u.display_name,'System/Demo') recorded_by
+           COALESCE(u.display_name,'System') recorded_by
     FROM transactions t
     JOIN facilities f ON f.id=t.facility_id
     JOIN service_areas sa ON sa.id=t.service_area_id
@@ -18,6 +19,7 @@ def transactions_df():
     JOIN food_items fi ON fi.id=t.food_item_id
     LEFT JOIN food_categories fc ON fc.id=fi.category_id
     LEFT JOIN users u ON u.id=t.recorded_by
+    {where}
     ORDER BY t.service_date DESC,t.id DESC
     """
     with connection() as c:

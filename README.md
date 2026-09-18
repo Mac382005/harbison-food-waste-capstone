@@ -1,182 +1,50 @@
-# Harbison Food Waste Intelligence — V2
+# Harbison Food Waste Intelligence - V5.2
 
-This is the upgraded capstone prototype for **2026-S2-37**.
+A Streamlit + SQLite prototype for recording and analysing food waste in residential aged care using Harbison reference data.
 
-## Instrustions
-```powershell
-git clone https://github.com/Mac382005/harbison-food-waste-capstone.git
-```
-- Then:
-```powershell
-cd harbison-food-waste-capstone
-```
-- Create your own virtual environment:
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
+## Data currently used
 
-- Install all project packages:
+- Autumn/Winter 2026 four-week menu
+- Regular, Soft Bite Sized, Minced and Puree menu variants
+- 12 Harbison soup recipes
+- 2 selected dessert recipes with sufficiently clear serving/yield data
+- Harbison supplier comparison (288 products) for reference charts and comparison only
+- manual confirmed ingredient prices for recipe costing
+- real waste records entered in the app or imported from CSV/Excel
+
+## Supplier scope
+
+Supplier comparison is kept because it is useful operational reference data and provides useful charts. The app does **not** recommend a supplier, automatically match supplier products to recipes, or automatically apply supplier quotes to costing.
+
+## Ingredient status
+
+The old Green / Blue / Orange row colouring was removed because it could hide table text and the categories overlapped. The tables now show explicit columns for:
+
+- **Source** - Harbison recipe or Manual/general
+- **Mapping** - mapped ingredient or Needs confirmation
+- **Price status** - Added, Needed or Not mapped
+
+Only numeric `kg`, `L` and `each` recipe lines are automatically mapped. Cups, tins, bunches, spoons and unspecified quantities remain unconverted until confirmed.
+
+## Record Waste workflow
+
+1. Choose service date.
+2. Choose menu type.
+3. Choose meal and menu component.
+4. Choose only from items actually scheduled on the imported Harbison menu.
+5. Choose facility/service area if configured.
+6. Enter production or plate waste and save.
+
+The menu can be previewed even before facility/service-area names are configured. Saving is disabled until a real location is selected.
+
+## Private data
+
+`data/private/` is ignored by Git. Keep Harbison source/reference files there unless Harbison explicitly approves public sharing.
+
+## Run / upgrade
+
 ```powershell
 pip install -r requirements.txt
-```
-- Then run the app:
-```powershell
-streamlit run app.py
-```
-
-If everything is correct, they should now have the same prototype you have.
-- Before they change anything:
-```powershell
-git checkout main
-git pull origin main
-```
-- Then create your own branch. When finish something run:
-```powershell
-git add .
-git commit -m "Improve forecasting page"
-git push -u origin feature/forecasting
-```
-Then go to GitHub and create a Pull Request.
-
-- After something is merged, everyone updates their own copy:
-```powershell
-git checkout main
-git pull origin main
-```
-Then they start the next task from the new version.
-## Major V2 upgrades
-
-- Real multi-page Streamlit navigation.
-- Prototype login and role-based access.
-- Passwords are stored using PBKDF2 hashing, not plain text.
-- Raw-material ingredient price history.
-- Recipe-based finished-food costing.
-- Historical transaction cost snapshots.
-- 90-day synthetic data generator covering **every active facility, service area and all six meal services**.
-- Seeded configuration produces approximately **8,640 synthetic transactions**, instead of 24,000+.
-- Improved dashboard:
-  - KPI breach **rate** with context;
-  - highest total waste in kg;
-  - highest average plate-waste percentage separately.
-- Audit log for important administrative actions.
-- More polished UI styling.
-
-## Prototype accounts
-
-| Username | Password | Role |
-|---|---|---|
-| admin | Admin123! | System Administrator |
-| manager | Manager123! | Foodservice Manager |
-| kitchen | Kitchen123! | Kitchen Staff |
-| dietitian | Dietitian123! | Dietitian / Analyst |
-
-These credentials are for demonstration only.
-
-## Access model
-
-### Kitchen Staff
-- Record Waste
-- Transactions
-
-### Foodservice Manager
-- Dashboard
-- Record Waste
-- Transactions
-- Reports
-- Forecasting
-- Ingredients & Prices
-- Recipes & Costing
-- Menu & Locations
-
-### Dietitian / Analyst
-- Dashboard
-- Transactions
-- Reports
-- Forecasting
-
-### System Administrator
-- Full access, including Users & Access and System Admin.
-
-## Raw-material pricing workflow
-
-1. Manager/Admin opens **Ingredients & Prices**.
-2. Selects an ingredient.
-3. Enters the supplier pack quantity and purchase price.
-4. The system calculates the current unit cost (e.g. A$/kg).
-5. Recipe costing automatically uses the newest price effective on that date.
-6. New waste records snapshot the resulting finished-food cost/kg.
-7. Existing historical waste transactions **do not change** when a later ingredient price is entered.
-
-Example:
-
-```text
-Chicken breast 10 kg pack = A$101
-Unit cost = A$10.10/kg
-
-Chicken Casserole recipe uses 10 kg chicken + other ingredients
-Recipe batch cost / finished yield = derived cost per kg
-
-4.5 kg wasted × derived finished-food cost/kg
-= estimated waste cost
-```
-
-## Synthetic data
-
-The generator uses 90 calendar days.
-
-For every day it covers:
-
-- both seeded facilities;
-- every active service area;
-- Breakfast;
-- Morning Tea;
-- Lunch;
-- Afternoon Tea;
-- Dinner;
-- Snacks.
-
-For each service-area/meal combination, it records one rotating menu item with:
-- one Production Waste transaction;
-- one Plate Waste transaction.
-
-With 8 seeded service areas:
-
-```text
-90 days × 8 areas × 6 meals × 2 waste types = 8,640 transactions
-```
-
-The food item rotates through the relevant menu so the dataset does not always test the same food.
-
-## Run V2
-
-From the folder containing `app.py`:
-
-```powershell
-python -m pip install -r requirements.txt
+python migrate_to_v5_2.py
 python -m streamlit run app.py
 ```
-
-The database is created automatically at:
-
-```text
-data/food_waste_v2.db
-```
-
-### First test
-
-1. Sign in as `admin / Admin123!`.
-2. Open **System Admin**.
-3. Click **Generate 90-day synthetic dataset**.
-4. Open **Dashboard**.
-5. Test the other roles by signing out and logging in with their demo accounts.
-
-## Important limitations
-
-- This is still a capstone prototype, not production security.
-- No MFA, SSO, password-reset email or enterprise identity provider.
-- User passwords are hashed, but deployment hardening is still required.
-- No direct electronic scale/IoT integration.
-- No procurement-system or supplier API integration.
-- Ingredient and recipe data are demonstration values until Harbison provides real recipes/order logs.
-- Forecasting is decision support only and should not automatically reduce food provision or place orders.

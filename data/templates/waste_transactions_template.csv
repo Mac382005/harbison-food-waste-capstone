@@ -1,0 +1,3 @@
+service_date,facility,service_area,meal,food_item,waste_type,prepared_kg,served_kg,waste_kg,resident_count,waste_reason,notes
+2026-09-17,REAL FACILITY NAME,REAL DINING AREA,Lunch,REAL FOOD ITEM,Production Waste,25,,2.3,100,Overproduction,
+2026-09-17,REAL FACILITY NAME,REAL DINING AREA,Lunch,REAL FOOD ITEM,Plate Waste,,22,3.1,100,Presented but not consumed,
