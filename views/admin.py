@@ -12,29 +12,31 @@ def page():
     page_header(
         "SYSTEM",
         "Administration",
-        "Harbison data readiness, KPI configuration and audit events. Synthetic data generation is disabled.",
+        "Harbison data readiness, KPI configuration and audit events. Synthetic ML generation is managed on the dedicated Synthetic ML Data page.",
     )
     render_source_badges([
         ("Sponsor-first mode", "source-green"),
-        ("Synthetic generation disabled", "source-blue"),
+        ("Synthetic ML data kept separate", "source-blue"),
     ])
 
     tab1, tab2, tab3 = st.tabs(["Data readiness", "KPI & system", "Audit log"])
 
     with tab1:
         real_tx = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=0")["n"]
-        demo_tx = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=1")["n"]
+        demo_tx = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=1 AND synthetic_run_id IS NULL")["n"]
+        synthetic_tx = fetchone("SELECT COUNT(*) n FROM transactions WHERE synthetic_run_id IS NOT NULL")["n"]
         menu_rows = fetchone("SELECT COUNT(*) n FROM harbison_menu_schedule")["n"]
         sponsor_recipes = fetchone("SELECT COUNT(*) n FROM sponsor_recipes")["n"]
         supplier_rows = fetchone("SELECT COUNT(*) n FROM supplier_products")["n"]
         coverage = sponsor_ingredient_coverage()
 
-        c1, c2, c3, c4, c5 = st.columns(5)
+        c1, c2, c3, c4, c5, c6 = st.columns(6)
         c1.metric("Real waste records", real_tx)
-        c2.metric("Real menu rows", menu_rows)
-        c3.metric("Validated recipes", sponsor_recipes)
-        c4.metric("Supplier rows", supplier_rows)
-        c5.metric("Legacy demo records", demo_tx)
+        c2.metric("Synthetic ML records", synthetic_tx)
+        c3.metric("Real menu rows", menu_rows)
+        c4.metric("Validated recipes", sponsor_recipes)
+        c5.metric("Supplier rows", supplier_rows)
+        c6.metric("Legacy demo records", demo_tx)
 
         p1, p2, p3 = st.columns(3)
         p1.metric("Recipe ingredient lines", coverage["recipe_lines"])
@@ -52,8 +54,10 @@ def page():
             )
             st.rerun()
 
+        if synthetic_tx > 0:
+            st.info("Synthetic ML records are available for analysis and forecasting and remain clearly separated from real operational records.")
         if demo_tx > 0:
-            st.warning("Legacy synthetic transactions still exist but are excluded from dashboards, reports and forecasting.")
+            st.warning("Legacy demo transactions still exist. They are excluded from the new ML workflow.")
 
         with st.expander("Retire old prototype-only data"):
             st.write(

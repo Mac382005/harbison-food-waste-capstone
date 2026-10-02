@@ -4,13 +4,34 @@ import pandas as pd
 from .db import connection
 
 
-def transactions_df(include_demo: bool = False):
-    where = "" if include_demo else "WHERE t.is_demo=0"
+def transactions_df(include_demo: bool = False, source: str | None = None):
+    """Load transaction data with an explicit source mode.
+
+    source options:
+      - "real": real operational records only
+      - "synthetic": menu-aligned synthetic ML records only
+      - "combined": real + synthetic ML records (legacy demo records excluded)
+
+    The older include_demo argument is retained for compatibility with existing pages.
+    """
+    if source == "synthetic":
+        where = "WHERE t.synthetic_run_id IS NOT NULL"
+    elif source == "combined":
+        where = "WHERE t.is_demo=0 OR t.synthetic_run_id IS NOT NULL"
+    elif source == "real":
+        where = "WHERE t.is_demo=0"
+    else:
+        where = "" if include_demo else "WHERE t.is_demo=0"
+
     q = f"""
     SELECT t.id,t.created_at,t.service_date,f.name facility,sa.name service_area,m.name meal,
            fi.name food_item,fc.name category,t.waste_type,t.prepared_kg,t.served_kg,
            t.waste_kg,t.waste_percentage,t.cost_per_kg_snapshot,t.waste_cost,
-           t.waste_reason,t.resident_count,t.notes,t.is_demo,
+           t.waste_reason,t.resident_count,t.notes,t.is_demo,t.menu_variant,t.menu_component,
+           t.synthetic_run_id,
+           CASE WHEN t.synthetic_run_id IS NOT NULL THEN 'Synthetic ML'
+                WHEN t.is_demo=0 THEN 'Real'
+                ELSE 'Legacy demo' END data_source,
            COALESCE(u.display_name,'System') recorded_by
     FROM transactions t
     JOIN facilities f ON f.id=t.facility_id
@@ -30,7 +51,7 @@ def transactions_df(include_demo: bool = False):
     return df
 
 
-def filtered(df, facility="All", area="All", meal="All", waste_type="All", food="All", start=None, end=None):
+def filtered(df, facility="All", area="All", meal="All", waste_type="All", food="All", start=None, end=None, menu_variant="All"):
     out = df.copy()
     if out.empty:
         return out
@@ -38,7 +59,14 @@ def filtered(df, facility="All", area="All", meal="All", waste_type="All", food=
         out = out[out.service_date.dt.date >= start]
     if end:
         out = out[out.service_date.dt.date <= end]
-    for col, val in [("facility",facility),("service_area",area),("meal",meal),("waste_type",waste_type),("food_item",food)]:
-        if val != "All":
+    for col, val in [
+        ("facility", facility),
+        ("service_area", area),
+        ("meal", meal),
+        ("waste_type", waste_type),
+        ("food_item", food),
+        ("menu_variant", menu_variant),
+    ]:
+        if val != "All" and col in out.columns:
             out = out[out[col] == val]
     return out
