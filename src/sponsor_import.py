@@ -365,7 +365,7 @@ def retire_legacy_demo_data():
     """Remove old prototype-only synthetic content while protecting sponsor and real records."""
     removed = {"demo_transactions": 0, "menu_rows": 0, "demo_food_items": 0, "demo_ingredients": 0, "placeholder_facilities": 0}
     with connection() as c:
-        cur = c.execute("DELETE FROM transactions WHERE is_demo=1")
+        cur = c.execute("DELETE FROM transactions WHERE is_demo=1 AND synthetic_run_id IS NULL")
         removed["demo_transactions"] = cur.rowcount if cur.rowcount != -1 else 0
 
         # The original four-week menu was entirely seeded demo content.

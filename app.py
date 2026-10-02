@@ -17,6 +17,7 @@ from views import (
     recipes,
     reference,
     sponsor_data,
+    synthetic_ml,
     users,
     admin,
 )
@@ -93,6 +94,15 @@ if role in {"admin", "manager", "dietitian"}:
             url_path="forecasting",
         ),
     ]
+    if role in {"admin", "manager"}:
+        analytics.append(
+            st.Page(
+                synthetic_ml.page,
+                title="Synthetic ML Data",
+                icon=":material/science:",
+                url_path="synthetic-ml-data",
+            )
+        )
 
 if role in {"admin", "manager"}:
     configuration += [

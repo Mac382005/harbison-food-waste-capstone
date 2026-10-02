@@ -245,6 +245,20 @@ CREATE TABLE IF NOT EXISTS menu_item_recipe_links (
     FOREIGN KEY(recipe_food_item_id) REFERENCES food_items(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS synthetic_generation_runs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at TEXT NOT NULL,
+    seed INTEGER NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    resident_min INTEGER NOT NULL,
+    resident_max INTEGER NOT NULL,
+    location_count INTEGER NOT NULL,
+    menu_rows_used INTEGER NOT NULL DEFAULT 0,
+    transactions_created INTEGER NOT NULL DEFAULT 0,
+    notes TEXT
+);
+
 CREATE INDEX IF NOT EXISTS idx_tx_date ON transactions(service_date);
 CREATE INDEX IF NOT EXISTS idx_tx_food ON transactions(food_item_id);
 CREATE INDEX IF NOT EXISTS idx_price_effective ON ingredient_price_history(ingredient_id,effective_date);
@@ -263,6 +277,9 @@ def init_db():
             c.execute("ALTER TABLE transactions ADD COLUMN menu_variant TEXT")
         if "menu_component" not in tx_cols:
             c.execute("ALTER TABLE transactions ADD COLUMN menu_component TEXT")
+        if "synthetic_run_id" not in tx_cols:
+            c.execute("ALTER TABLE transactions ADD COLUMN synthetic_run_id INTEGER")
+        c.execute("CREATE INDEX IF NOT EXISTS idx_tx_synthetic_run ON transactions(synthetic_run_id)")
 
 
 def fetchall(sql: str, params=()):
