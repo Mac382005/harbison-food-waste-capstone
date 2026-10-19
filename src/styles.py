@@ -55,7 +55,9 @@ def apply_styles():
           padding:8px 12px;
           border:1px solid var(--fw-border);
           border-radius:999px;
-          background:#fff;
+          background:rgba(127,127,127,.10);
+          color:inherit;
+          font-weight:600;
           font-size:0.88rem;
         }
         .legend-dot {

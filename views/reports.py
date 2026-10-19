@@ -1,9 +1,11 @@
+from datetime import date
+import pandas as pd
 import streamlit as st
 import plotly.express as px
 
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
-from src.analytics import transactions_df, filtered
+from src.styles import page_header
+from src.analytics import SOURCE_MODES, available_sources, transactions_df, filtered
 from src.db import setting, fetchone
 from .common import money, fmt_pct
 
@@ -29,27 +31,15 @@ def page():
     page_header(
         "MANAGEMENT",
         "Reports",
-        "Daily, weekly and four-week-cycle views for real records or clearly-labelled synthetic ML data.",
+        "Daily, weekly and four-week-cycle views using either real food-waste records or synthetic data.",
     )
-    render_source_badges([
-        ("Real and synthetic sources separated", "source-green"),
-        ("Synthetic data = model development only", "source-blue"),
-    ])
 
-    syn_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE synthetic_run_id IS NOT NULL")["n"]
-    real_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=0")["n"]
-    opts = []
-    if syn_n:
-        opts.append("Synthetic ML data")
-    if real_n:
-        opts.append("Real Harbison data")
-    if syn_n and real_n:
-        opts.append("Real + synthetic")
+    opts = available_sources()
     if not opts:
         st.info("No waste data is available yet.")
         return
     source_label = st.selectbox("Data source", opts, index=0)
-    source = {"Synthetic ML data": "synthetic", "Real Harbison data": "real", "Real + synthetic": "combined"}[source_label]
+    source = SOURCE_MODES[source_label]
     df = transactions_df(source=source)
     if df.empty:
         st.info("No records are available for this source.")
@@ -62,7 +52,7 @@ def page():
     area = c2.selectbox("Service area", ["All"] + sorted(df.service_area.unique().tolist()))
     meal = c3.selectbox("Meal", ["All"] + sorted(df.meal.unique().tolist()))
     wtype = c4.selectbox("Waste type", ["All", "Production Waste", "Plate Waste"])
-    period = st.segmented_control("Report grouping", ["Daily", "Weekly", "4-week"], default="Weekly")
+    period = st.segmented_control("Report grouping", ["Daily", "Weekly", "4-week"], default="Weekly") or "Weekly"
     fdf = filtered(df, facility=facility, area=area, meal=meal, waste_type=wtype)
 
     if fdf.empty:
@@ -70,26 +60,69 @@ def page():
         return
 
     kpi = float(setting("plate_waste_kpi", "20") or 20)
-    plate = fdf[fdf.waste_type == "Plate Waste"]
-    breaches = int((plate.waste_percentage.fillna(-1) > kpi).sum()) if not plate.empty else 0
-    known_cost = fdf.waste_cost.dropna()
-
-    a, b, c, d = st.columns(4)
-    a.metric("Waste", f"{fdf.waste_kg.sum():.1f} kg")
-    b.metric("Waste cost", "N/A" if known_cost.empty else money(known_cost.sum()))
-    c.metric("Avg plate waste", fmt_pct(plate.waste_percentage.dropna().mean() if not plate.empty else None))
-    breach_rate = (breaches / len(plate) * 100.0) if len(plate) else 0.0
-    d.metric("KPI breach rate", f"{breach_rate:.1f}%", help=f"{breaches:,} of {len(plate):,} plate-waste observations exceeded {kpi:.1f}%.")
 
     temp = fdf.copy()
     if period == "Daily":
         temp["period"] = temp.service_date.dt.date.astype(str)
+        temp["period_end"] = temp.service_date.dt.normalize()
     elif period == "Weekly":
-        temp["period"] = temp.service_date.dt.to_period("W").astype(str)
+        weeks = temp.service_date.dt.to_period("W")
+        temp["period"] = weeks.astype(str)
+        temp["period_end"] = weeks.dt.end_time.dt.normalize()
     else:
-        origin = temp.service_date.min()
+        origin = temp.service_date.min().normalize()
         temp["period_index"] = ((temp.service_date - origin).dt.days // 28) + 1
         temp["period"] = "Cycle " + temp["period_index"].astype(str)
+        temp["period_end"] = origin + pd.to_timedelta(temp["period_index"] * 28 - 1, unit="D")
+
+    # Headline numbers follow the grouping: latest complete period vs the one before it.
+    order = temp.groupby("period").period_end.max().sort_values()
+    complete = order[order < pd.Timestamp(date.today())]
+    all_periods = list(order.index)
+    default = complete.index[-1] if not complete.empty else all_periods[-1]
+    newest_first = all_periods[::-1]
+    current = st.selectbox(
+        "Show", newest_first, index=newest_first.index(default), key=f"rp_pick_{period}",
+        format_func=lambda p_: p_ + ("  (in progress)" if order[p_] >= pd.Timestamp(date.today()) else ""))
+    pos = all_periods.index(current)
+    previous = all_periods[pos - 1] if pos > 0 else None
+
+    def _numbers(part):
+        plate = part[part.waste_type == "Plate Waste"]
+        rated = plate.waste_percentage.dropna()
+        cost = part.waste_cost.dropna()
+        return {
+            "kg": part.waste_kg.sum(),
+            "cost": cost.sum() if not cost.empty else None,
+            "plate_pct": rated.mean() if not rated.empty else None,
+            "breach": (rated > kpi).mean() * 100 if not rated.empty else None,
+            "breaches": int((rated > kpi).sum()),
+            "plate_n": len(rated),
+        }
+
+    cur = _numbers(temp[temp.period == current])
+    prev = _numbers(temp[temp.period == previous]) if previous else None
+
+    def _delta(key, fmt):
+        if not prev or cur[key] is None or prev[key] is None:
+            return None
+        return fmt(cur[key] - prev[key])
+
+    label = {"Daily": "Day", "Weekly": "Week", "4-week": "4 weeks"}[period]
+    st.markdown(f"**{label}: {current}**" + (f" · compared with {previous}" if previous else ""))
+    a, b, c, d = st.columns(4)
+    a.metric("Waste", f"{cur['kg']:.1f} kg", _delta("kg", lambda v: f"{v:+.1f} kg"), delta_color="inverse")
+    b.metric("Waste cost", money(cur["cost"]), _delta("cost", lambda v: f"{v:+,.2f}"), delta_color="inverse")
+    c.metric("Avg plate waste", fmt_pct(cur["plate_pct"]), _delta("plate_pct", lambda v: f"{v:+.1f} pts"),
+             delta_color="inverse")
+    d.metric("KPI breach rate", fmt_pct(cur["breach"]), _delta("breach", lambda v: f"{v:+.1f} pts"),
+             delta_color="inverse",
+             help=f"{cur['breaches']:,} of {cur['plate_n']:,} plate-waste observations exceeded {kpi:.1f}%.")
+    all_cost = fdf.waste_cost.dropna()
+    st.caption(f"All dates: {fdf.waste_kg.sum():.1f} kg"
+               + ("" if all_cost.empty else f" · {money(all_cost.sum())}")
+               + f" · {fdf.service_date.min():%d %b} to {fdf.service_date.max():%d %b %Y}")
+    plate = fdf[fdf.waste_type == "Plate Waste"]
 
     trend = temp.groupby(["period", "waste_type"], as_index=False).waste_kg.sum()
     st.plotly_chart(

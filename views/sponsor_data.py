@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.auth import require_roles
-from src.styles import page_header, render_legend, render_source_badges
+from src.styles import page_header, render_legend
 from src.db import fetchall, fetchone, log_action
 from src.sponsor_import import (
     import_default_sponsor_files,
@@ -156,13 +156,6 @@ def page():
         "HARBISON DATA",
         "Supplier, Menu, Recipes & Imports",
         "Use Harbison reference data for menu planning, recipe costing and supplier comparison without turning the app into a supplier recommendation tool.",
-    )
-    render_source_badges(
-        [
-            ("Harbison supplier reference", "source-green"),
-            ("Real four-week menu", "source-blue"),
-            ("Validated recipes", "source-orange"),
-        ]
     )
 
     tab_supplier, tab_menu, tab_recipes, tab_import = st.tabs(

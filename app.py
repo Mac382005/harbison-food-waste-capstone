@@ -20,6 +20,9 @@ from views import (
     synthetic_ml,
     users,
     admin,
+    plate_waste,
+    import_residents,
+    reasons_notes,
 )
 
 st.set_page_config(
@@ -34,18 +37,79 @@ seed_core()
 ensure_sponsor_data_loaded()
 ensure_menu_loaded()
 
+PROGRAMS = {
+    "waste": {
+        "title": "Food Waste Management",
+        "subtitle": "Waste records, costing, reports and forecasting.",
+        "icon": ":material/delete:",
+        "roles": {"admin", "manager", "kitchen", "dietitian"},
+    },
+    "plate": {
+        "title": "Resident Meal & Consumption Records",
+        "subtitle": "Resident details, meal orders, intake and consumption records.",
+        "icon": ":material/restaurant:",
+        "roles": {"admin", "dietitian", "care"},
+    },
+}
+
+
+def choose_program():
+    st.markdown(
+        """<div class="hero"><div class="hero-kicker">HARBISON CARE · CAPSTONE PROTOTYPE</div>
+        <div class="hero-title">Choose a program</div></div>""",
+        unsafe_allow_html=True,
+    )
+    cols = st.columns(2)
+    for col, (key, prog) in zip(cols, PROGRAMS.items()):
+        with col.container(border=True):
+            st.markdown(f"## {prog['title']}")
+            st.caption(prog["subtitle"])
+            if st.button("Open", key=f"open_{key}", type="primary", icon=prog["icon"], use_container_width=True):
+                st.session_state["program"] = key
+                st.rerun()
+
+
+program = st.session_state.get("program")
+if program not in PROGRAMS:
+    choose_program()
+    st.stop()
+prog = PROGRAMS[program]
+
 user = current_user()
 if not user:
-    login_screen()
+    login_screen(prog["title"], prog["subtitle"], prog["roles"])
+    _, mid, _ = st.columns([1, 1.2, 1])
+    if mid.button("← Choose another program", key="back_to_programs", use_container_width=True):
+        st.session_state.pop("program", None)
+        st.rerun()
+    st.stop()
+if user["role"] not in prog["roles"]:
+    st.error(f"This account can't open {prog['title']}.")
+    if st.button("Choose another program"):
+        st.session_state.pop("program", None)
+        st.rerun()
     st.stop()
 
 with st.sidebar:
-    st.markdown("### 🍽️ Harbison Food Waste")
-    st.caption(user["display_name"])
-    st.caption(ROLE_LABELS.get(user["role"], user["role"]))
-    st.caption("Sponsor-first data mode")
+    st.markdown(f"### {prog['title']}")
+    st.caption(f"Signed in as **{user['display_name']}** · {ROLE_LABELS.get(user['role'], user['role'])}")
+    if st.button("Switch program", use_container_width=True, icon=":material/swap_horiz:"):
+        st.session_state.pop("program", None)
+        st.rerun()
     if st.button("Sign out", use_container_width=True):
         logout()
+
+if program == "plate":
+    plate_pages = [st.Page(plate_waste.page, title="Resident Meals", icon=":material/restaurant:",
+                           url_path="resident-meals", default=True)]
+    if user["role"] in {"admin", "dietitian"}:
+        plate_pages.append(st.Page(reasons_notes.page, title="Reasons & notes", icon=":material/sticky_note_2:",
+                                   url_path="reasons-notes"))
+    if user["role"] == "admin":
+        plate_pages.append(st.Page(import_residents.page, title="Import residents", icon=":material/upload_file:",
+                                   url_path="import-residents"))
+    st.navigation(plate_pages).run()
+    st.stop()
 
 role = user["role"]
 operations = []
@@ -98,7 +162,7 @@ if role in {"admin", "manager", "dietitian"}:
         analytics.append(
             st.Page(
                 synthetic_ml.page,
-                title="Synthetic ML Data",
+                title="Synthetic Data",
                 icon=":material/science:",
                 url_path="synthetic-ml-data",
             )
@@ -156,5 +220,5 @@ if operations:
 if configuration:
     sections["Configuration"] = configuration
 
-pg = st.navigation(sections)
+pg = st.navigation(sections, expanded=True)
 pg.run()

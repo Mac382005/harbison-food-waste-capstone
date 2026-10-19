@@ -1,8 +1,8 @@
 from datetime import date, datetime
 import streamlit as st
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
-from src.db import fetchall, fetchone, execute, setting, log_action
+from src.styles import page_header
+from src.db import fetchall, fetchone, execute, log_action
 from src.menu import menu_week, menu_variants, menu_services, menu_components, menu_items
 from src.costing import food_cost_per_kg
 from .common import money, fmt_pct
@@ -19,7 +19,6 @@ def page():
         "Record Food Waste",
         "Select the service date and real Autumn/Winter menu first. A location is required only when saving the record.",
     )
-    render_source_badges([("Real Harbison menu", "source-green"), ("No synthetic menu items", "source-blue")])
 
     st.subheader("1. Menu selection")
     a, b = st.columns(2)
@@ -81,44 +80,60 @@ def page():
 
     st.subheader("3. Waste details")
     waste_type = st.radio("Waste type", ["Production Waste", "Plate Waste"], horizontal=True)
-    q1, q2, q3 = st.columns(3)
-    prepared = q1.number_input(
-        "Prepared kg", min_value=0.0, value=0.0, step=.1,
-        help="Used for production-waste percentage when measured."
-    )
-    served = q2.number_input(
-        "Served kg", min_value=0.0, value=0.0, step=.1,
-        help="Used for plate-waste percentage when measured."
-    )
-    waste = q3.number_input("Waste kg", min_value=0.0, value=0.0, step=.1)
+
+    if waste_type == "Production Waste":
+        q1, q2, q3 = st.columns(3)
+        prepared = q1.number_input(
+            "Prepared kg", min_value=0.0, value=0.0, step=.1,
+            help="Total weight prepared for this menu item."
+        )
+        served = q2.number_input(
+            "Served / plated kg", min_value=0.0, value=0.0, step=.1,
+            help="Weight that left the kitchen for service."
+        )
+        production_valid = served <= prepared
+        waste = max(prepared - served, 0.0) if production_valid else 0.0
+        q3.metric("Calculated production waste", f"{waste:.2f} kg", help="Prepared kg minus served / plated kg.")
+        prep = prepared or None
+        srv = served or None
+        wp = pct(waste, prep)
+    else:
+        prepared = served = 0.0
+        prep = srv = None
+        st.info(
+            "For plate waste, kitchen staff collect the leftovers returned from all residents for the selected meal service, "
+            "combine them for weighing, and enter the measured total below. This is a direct kitchen measurement; do not "
+            "calculate plate waste from resident intake percentages. Prepared and served weights are not required."
+        )
+        waste = st.number_input(
+            "Measured combined plate waste (kg)", min_value=0.0, value=0.0, step=.1,
+            help="Total weight measured by kitchen staff after combining returned leftovers from residents for this meal service."
+        )
+        wp = None
+
     residents = st.number_input("Residents / meals served (optional)", min_value=0, value=0, step=1)
     notes = st.text_area("Notes (optional)", max_chars=300)
-
-    prep = prepared or None
-    srv = served or None
-    wp = pct(waste, prep if waste_type == "Production Waste" else srv)
     cost_food_item_id = item.get("linked_recipe_food_item_id") or item["id"]
     cost, cost_source = food_cost_per_kg(cost_food_item_id, service_date)
     waste_cost = waste * cost if cost is not None else None
-    kpi = float(setting("plate_waste_kpi", "20") or 20)
 
     st.subheader("4. Review")
     r1, r2, r3 = st.columns(3)
-    r1.metric("Waste", f"{waste:.2f} kg")
-    r2.metric("Waste %", fmt_pct(wp))
+    if waste_type == "Production Waste":
+        r1.metric("Production waste", f"{waste:.2f} kg")
+        r2.metric("Production waste %", fmt_pct(wp))
+    else:
+        r1.metric("Measured combined plate waste", f"{waste:.2f} kg")
+        r2.metric("Per meal served", f"{waste * 1000 / residents:.0f} g" if residents else "N/A")
     r3.metric("Estimated cost", money(waste_cost), help=cost_source)
     if cost is None:
         st.caption("Cost will appear when the linked recipe has enough confirmed ingredient prices.")
 
     errs = []
-    if waste_type == "Production Waste" and prep is not None and waste > prep:
-        errs.append("Production waste cannot exceed prepared weight.")
-    if waste_type == "Plate Waste" and srv is not None and waste > srv:
-        errs.append("Plate waste cannot exceed served weight.")
+    if waste_type == "Production Waste" and served > prepared:
+        errs.append("Served / plated weight cannot exceed prepared weight.")
     for err in errs:
         st.error(err)
-    if waste_type == "Plate Waste" and wp is not None and wp > kpi:
-        st.warning(f"Plate waste is above the configured {kpi:.1f}% KPI.")
 
     location_ready = fid is not None and aid is not None
     if not location_ready:

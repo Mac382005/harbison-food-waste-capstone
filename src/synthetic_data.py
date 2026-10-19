@@ -8,7 +8,8 @@ from typing import Iterable
 
 import numpy as np
 
-from .db import connection, fetchone
+from .costing import food_cost_per_kg
+from .db import connection, fetchall, fetchone
 
 
 VARIANT_SHARES = {
@@ -209,11 +210,11 @@ def _ensure_locations(c, fallback_facilities: int, fallback_areas: int):
 
     created = []
     for fi in range(1, max(1, fallback_facilities) + 1):
-        facility = f"Synthetic Harbison Site {fi}"
+        facility = f"Harbison Site {fi}"
         c.execute("INSERT OR IGNORE INTO facilities(name,active) VALUES(?,1)", (facility,))
         facility_id = c.execute("SELECT id FROM facilities WHERE name=?", (facility,)).fetchone()[0]
         for ai in range(1, max(1, fallback_areas) + 1):
-            area = f"Synthetic Dining Area {ai}"
+            area = f"Dining Area {ai}"
             c.execute(
                 "INSERT OR IGNORE INTO service_areas(facility_id,name,active) VALUES(?,?,1)",
                 (facility_id, area),
@@ -259,6 +260,30 @@ def estimate_transaction_count(start_date: date, end_date: date, locations: int 
 
 
 
+def _confirmed_cost_lookup(start: date, end: date):
+    """Precompute confirmed cost/kg per menu food item, read before the generator's write transaction.
+
+    Costs only change on ingredient price effective dates, so each item is costed once per
+    price period instead of once per generated row.
+    """
+    food_ids = [r["food_item_id"] for r in fetchall("SELECT DISTINCT food_item_id FROM harbison_menu_schedule")]
+    change_dates = sorted({start} | {
+        date.fromisoformat(r["effective_date"])
+        for r in fetchall(
+            "SELECT DISTINCT effective_date FROM ingredient_price_history WHERE effective_date>? AND effective_date<=?",
+            (start.isoformat(), end.isoformat()),
+        )
+    })
+    costs = {(fid, d): food_cost_per_kg(fid, d)[0] for fid in food_ids for d in change_dates}
+
+    def cost_on(food_item_id: int, service_date: date):
+        period = max(d for d in change_dates if d <= service_date)
+        value = costs.get((food_item_id, period))
+        return float(value) if value is not None else None
+
+    return cost_on
+
+
 def generate_synthetic_ml_data(config: GenerationConfig) -> dict:
     """Generate reproducible, menu-aligned synthetic production and plate-waste records.
 
@@ -274,9 +299,10 @@ def generate_synthetic_ml_data(config: GenerationConfig) -> dict:
 
     rng = np.random.default_rng(int(config.seed))
     now = datetime.now().isoformat(timespec="seconds")
+    cost_on = _confirmed_cost_lookup(config.start_date, config.end_date)
 
     with connection() as c:
-        menu_count = c.execute("SELECT COUNT(*) FROM harbison_menu_schedule").fetchone()[0]
+        menu_count =c.execute("SELECT COUNT(*) FROM harbison_menu_schedule").fetchone()[0]
         if not menu_count:
             raise RuntimeError("No Harbison menu is loaded. Reconcile the sponsor menu before generating synthetic data.")
 
@@ -516,11 +542,8 @@ def generate_synthetic_ml_data(config: GenerationConfig) -> dict:
                     )
                     plate_waste = served_kg * plate_ratio
 
-                    # No fake supplier/order history. Use a confirmed manual cost only when one exists.
-                    cost_row = c.execute(
-                        "SELECT manual_cost_per_kg FROM food_items WHERE id=?", (item["food_item_id"],)
-                    ).fetchone()
-                    cost = float(cost_row[0]) if cost_row and cost_row[0] is not None else None
+                    # No fake supplier/order history. Use a confirmed recipe-derived or manual cost only when one exists.
+                    cost = cost_on(item["food_item_id"], service_date)
 
                     prod_reason = (
                         "Synthetic: demand below preparation plan"

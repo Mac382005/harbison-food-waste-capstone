@@ -2,14 +2,13 @@ from datetime import date
 import pandas as pd
 import streamlit as st
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
+from src.styles import page_header
 from src.db import fetchall, fetchone, execute, log_action
 
 
 def page():
     user=require_roles("admin","manager")
     page_header("CONFIGURATION","Menu & Locations","Manage real Harbison locations and review the imported Autumn/Winter four-week menu.")
-    render_source_badges([("Real Autumn/Winter menu","source-green"),("4 menu types","source-blue")])
     tab1,tab2,tab3=st.tabs(["Locations","Four-week menu","Food items"])
     with tab1:
         facilities=fetchall("SELECT * FROM facilities WHERE active=1 ORDER BY name")

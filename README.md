@@ -49,7 +49,7 @@ Only numeric `kg`, `L` and `each` recipe lines are automatically mapped. Cups, t
 ```powershell
 pip install -r requirements.txt
 python migrate_to_v6_ml.py
-python generate_ml_data.py --start 2026-03-01 --end 2026-09-30 --seed 42
+python generate_synthetic_data.py --start 2026-03-01 --end 2026-09-30 --seed 42 --intake-days 30 --residents-per-area 12
 python -m streamlit run app.py
 ```
 

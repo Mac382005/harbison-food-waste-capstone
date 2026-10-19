@@ -1,7 +1,7 @@
 import streamlit as st
 
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
+from src.styles import page_header
 from src.db import fetchone, setting, set_setting, fetchall, log_action
 from src.sponsor_import import sponsor_ingredient_coverage, retire_legacy_demo_data, import_default_sponsor_files
 from src.menu_import import import_harbison_menu
@@ -12,12 +12,8 @@ def page():
     page_header(
         "SYSTEM",
         "Administration",
-        "Harbison data readiness, KPI configuration and audit events. Synthetic ML generation is managed on the dedicated Synthetic ML Data page.",
+        "Harbison data readiness, KPI configuration and audit events. Synthetic ML generation is managed on the dedicated Synthetic Data page.",
     )
-    render_source_badges([
-        ("Sponsor-first mode", "source-green"),
-        ("Synthetic ML data kept separate", "source-blue"),
-    ])
 
     tab1, tab2, tab3 = st.tabs(["Data readiness", "KPI & system", "Audit log"])
 

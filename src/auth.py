@@ -15,6 +15,7 @@ ROLE_LABELS = {
     "manager": "Foodservice Manager",
     "kitchen": "Kitchen Staff",
     "dietitian": "Dietitian / Analyst",
+    "care": "Nurse / Care Worker",
 }
 
 
@@ -41,6 +42,7 @@ def seed_demo_users():
         ("manager", "Foodservice Manager", "manager", "Manager123!"),
         ("kitchen", "Kitchen Staff", "kitchen", "Kitchen123!"),
         ("dietitian", "Dietitian / Analyst", "dietitian", "Dietitian123!"),
+        ("care", "Care Worker (demo)", "care", "Care123!"),
     ]
     for username, name, role, password in demo:
         if not fetchone("SELECT id FROM users WHERE username=?", (username,)):
@@ -61,13 +63,13 @@ def current_user():
     return st.session_state.get("user")
 
 
-def login_screen():
+def login_screen(title: str = "Food Waste Intelligence", subtitle: str = "", allowed_roles=None):
     st.markdown(
-        """
+        f"""
         <div class="hero">
           <div class="hero-kicker">HARBISON CARE · CAPSTONE PROTOTYPE</div>
-          <div class="hero-title">Food Waste Intelligence</div>
-          <div class="hero-sub">Secure prototype for kitchen data collection, costing, reporting and forecasting.</div>
+          <div class="hero-title">{title}</div>
+          <div class="hero-sub">{subtitle}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -81,17 +83,21 @@ def login_screen():
             submitted = st.form_submit_button("Sign in", type="primary", use_container_width=True)
         if submitted:
             user = authenticate(username, password)
-            if user:
+            if user and allowed_roles and user["role"] not in allowed_roles:
+                st.error(f"This account can't open {title}.")
+            elif user:
                 st.session_state.user = user
-                log_action(user["id"], "LOGIN", "Successful prototype login")
+                log_action(user["id"], "LOGIN", f"Successful prototype login ({title})")
                 st.rerun()
-            st.error("Invalid username or password.")
+            else:
+                st.error("Invalid username or password.")
         with st.expander("Prototype demo accounts"):
             st.code(
                 "admin / Admin123!\n"
                 "manager / Manager123!\n"
                 "kitchen / Kitchen123!\n"
-                "dietitian / Dietitian123!"
+                "dietitian / Dietitian123!\n"
+                "care / Care123!"
             )
             st.caption("Demo credentials only. Replace before any real deployment.")
 
