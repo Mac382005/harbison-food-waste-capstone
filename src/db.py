@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL UNIQUE,
     display_name TEXT NOT NULL,
-    role TEXT NOT NULL CHECK(role IN ('admin','manager','kitchen','dietitian')),
+    role TEXT NOT NULL CHECK(role IN ('admin','manager','kitchen','dietitian','care')),
     password_hash TEXT NOT NULL,
     active INTEGER NOT NULL DEFAULT 1,
     created_at TEXT NOT NULL
@@ -265,9 +265,63 @@ CREATE INDEX IF NOT EXISTS idx_price_effective ON ingredient_price_history(ingre
 """
 
 
+def _migrate_users_role_constraint():
+    """Rebuild users so its role CHECK allows 'care' (Nurse / Care Worker).
+
+    SQLite cannot alter a CHECK constraint, so this follows the documented table-rebuild
+    procedure: backup, foreign keys off, one transaction, foreign_key_check before commit.
+    """
+    if not DB_PATH.exists():
+        return
+    conn = sqlite3.connect(DB_PATH, timeout=30, isolation_level=None)
+    try:
+        row = conn.execute("SELECT sql FROM sqlite_master WHERE type='table' AND name='users'").fetchone()
+        if not row or "'care'" in row[0]:
+            return
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup = sqlite3.connect(DB_PATH.with_name(f"food_waste_before_care_role_{stamp}.db"))
+        conn.backup(backup)
+        backup.close()
+        conn.execute("PRAGMA foreign_keys=OFF")
+        conn.execute("BEGIN IMMEDIATE")
+        try:
+            conn.execute(
+                """CREATE TABLE users_new (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL UNIQUE,
+                    display_name TEXT NOT NULL,
+                    role TEXT NOT NULL CHECK(role IN ('admin','manager','kitchen','dietitian','care')),
+                    password_hash TEXT NOT NULL,
+                    active INTEGER NOT NULL DEFAULT 1,
+                    created_at TEXT NOT NULL
+                )"""
+            )
+            conn.execute(
+                """INSERT INTO users_new(id,username,display_name,role,password_hash,active,created_at)
+                   SELECT id,username,display_name,role,password_hash,active,created_at FROM users"""
+            )
+            conn.execute("DROP TABLE users")
+            conn.execute("ALTER TABLE users_new RENAME TO users")
+            if conn.execute("PRAGMA foreign_key_check").fetchall():
+                raise RuntimeError("Foreign key check failed while migrating users table.")
+            conn.execute("COMMIT")
+        except Exception:
+            conn.execute("ROLLBACK")
+            raise
+        finally:
+            conn.execute("PRAGMA foreign_keys=ON")
+    finally:
+        conn.close()
+
+
 def init_db():
+    from .intake_db import INTAKE_SCHEMA, seed_intake_defaults
+
+    _migrate_users_role_constraint()
     with connection() as c:
         c.executescript(SCHEMA)
+        c.executescript(INTAKE_SCHEMA)
+        seed_intake_defaults(c)
         c.execute("INSERT OR IGNORE INTO settings(key,value) VALUES('plate_waste_kpi','20')")
         c.execute(
             "INSERT OR IGNORE INTO menu_settings(id,cycle_start_date,cycle_weeks) VALUES(1,'2026-08-03',4)"
@@ -279,7 +333,11 @@ def init_db():
             c.execute("ALTER TABLE transactions ADD COLUMN menu_component TEXT")
         if "synthetic_run_id" not in tx_cols:
             c.execute("ALTER TABLE transactions ADD COLUMN synthetic_run_id INTEGER")
+        if "intake_observation_id" not in tx_cols:
+            # Links plate waste sent from Plate Waste Management back to the nurse's meal record.
+            c.execute("ALTER TABLE transactions ADD COLUMN intake_observation_id INTEGER")
         c.execute("CREATE INDEX IF NOT EXISTS idx_tx_synthetic_run ON transactions(synthetic_run_id)")
+        c.execute("CREATE INDEX IF NOT EXISTS idx_tx_intake_obs ON transactions(intake_observation_id)")
 
 
 def fetchall(sql: str, params=()):

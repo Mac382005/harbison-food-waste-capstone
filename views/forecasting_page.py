@@ -4,8 +4,8 @@ import pandas as pd
 import streamlit as st
 
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
-from src.analytics import transactions_df
+from src.styles import page_header
+from src.analytics import SOURCE_MODES, available_sources, transactions_df
 from src.forecasting import (
     context_frame,
     predict_plate_waste,
@@ -47,42 +47,20 @@ def page():
         "Train on menu-aligned synthetic data now, then move toward real Harbison observations as they become available.",
     )
 
-    syn_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE synthetic_run_id IS NOT NULL")["n"]
-    real_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=0")["n"]
-    badges = [("Harbison menu context", "source-green")]
-    if syn_n:
-        badges.append((f"Synthetic ML training: {syn_n:,} records", "source-blue"))
-    if real_n:
-        badges.append((f"Real records: {real_n:,}", "source-green"))
-    badges.append(("Decision support — not automatic ordering", "source-orange"))
-    render_source_badges(badges)
-
-    source_options = []
-    if syn_n:
-        source_options.append("Synthetic ML data")
-    if real_n:
-        source_options.append("Real Harbison data")
-    if syn_n and real_n:
-        source_options.append("Real + synthetic")
+    source_options = available_sources()
     if not source_options:
-        st.info("No training data is available yet. Generate a menu-aligned dataset in Synthetic ML Data or collect real waste records.")
+        st.info("No training data is available yet. Generate synthetic data or collect real waste records.")
         return
 
     source_label = st.selectbox("Training source", source_options, index=0)
-    source_map = {
-        "Synthetic ML data": "synthetic",
-        "Real Harbison data": "real",
-        "Real + synthetic": "combined",
-    }
-    df = transactions_df(source=source_map[source_label])
+    source_mode = SOURCE_MODES[source_label]
+    df = transactions_df(source=source_mode)
 
-    if source_label == "Synthetic ML data":
+    if source_mode == "synthetic":
         st.info(
-            "Model results on this page are based on clearly labelled synthetic training data generated from the real Harbison menu structure. "
-            "They demonstrate the ML workflow and should not be presented as measured Harbison performance."
+            "Model results on this page use clearly labelled synthetic training data generated from the real Harbison menu structure. "
+            "They demonstrate the ML workflow and are not measured Harbison performance."
         )
-    elif source_label == "Real + synthetic":
-        st.warning("Combined training mixes simulated and real observations. Use this only for experimentation; report real-only model results separately once enough real data exists.")
 
     try:
         with st.spinner("Training and evaluating time-split ML models..."):

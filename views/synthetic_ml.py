@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 import plotly.express as px
 import streamlit as st
@@ -6,7 +6,7 @@ import streamlit as st
 from src.auth import require_roles
 from src.analytics import transactions_df
 from src.db import fetchone, log_action
-from src.styles import page_header, render_source_badges
+from src.styles import page_header
 
 _GENERIC_SERVICE_LABELS = {
     "harbison morning tea",
@@ -15,6 +15,7 @@ _GENERIC_SERVICE_LABELS = {
     "afternoon tea",
 }
 
+from src.synthetic_intake import clear_synthetic_resident_data, generate_synthetic_resident_data
 from src.synthetic_data import (
     GenerationConfig,
     clear_synthetic_ml_data,
@@ -28,29 +29,26 @@ def page():
     user = require_roles("admin", "manager")
     page_header(
         "MODEL DEVELOPMENT",
-        "Synthetic ML Dataset",
-        "Generate a large, reproducible training dataset from the real Harbison four-week menu while keeping it clearly separate from operational records.",
+        "Synthetic Data",
+        "Generate one consistent synthetic dataset for waste analysis, ML forecasting, and synthetic resident meal-record testing.",
     )
-    render_source_badges([
-        ("Harbison menu structure", "source-green"),
-        ("Synthetic training records", "source-blue"),
-        ("Never treated as real observations", "source-orange"),
-    ])
 
     summary = synthetic_summary()
+    demo_residents = fetchone("SELECT COUNT(*) n FROM intake_residents WHERE data_source='fictional_demo' AND active=1")["n"]
+    demo_meals = fetchone("SELECT COUNT(*) n FROM intake_meal_observations WHERE data_source='fictional_demo' AND is_current=1")["n"]
     m1, m2, m3, m4 = st.columns(4)
-    m1.metric("Synthetic transactions", f"{summary['transactions']:,}")
-    m2.metric("Days", summary["days"])
-    m3.metric("Menu foods", summary["foods"])
-    m4.metric("Service areas", summary["service_areas"])
+    m1.metric("Synthetic waste records", f"{summary['transactions']:,}")
+    m2.metric("Synthetic residents", f"{demo_residents:,}")
+    m3.metric("Resident meal records", f"{demo_meals:,}")
+    m4.metric("Menu foods", summary["foods"])
     if summary["start_date"]:
         st.caption(f"Current synthetic range: {summary['start_date']} to {summary['end_date']}")
 
-    with st.expander("Generate / replace training data", expanded=summary["transactions"] == 0):
+    with st.expander("Generate / replace synthetic data", expanded=summary["transactions"] == 0):
         st.write(
-            "The generator follows the imported menu week/day/meal/component/texture structure. "
-            "It creates realistic variation in occupancy, resident demand, meal acceptance, planning error, production waste and plate waste. "
-            "Supplier comparison rows are not invented into historical orders; confirmed costs are used only when already available."
+            "One action now generates both the menu-aligned synthetic food-waste history used by the ML model "
+            "and synthetic resident meal/consumption records used to test the resident workflow. "
+            "Both remain clearly synthetic and separate from real operational records."
         )
         c1, c2 = st.columns(2)
         start = c1.date_input("Start date", date(2026, 3, 1), key="syn_start")
@@ -60,6 +58,10 @@ def page():
         resident_min = c3.number_input("Residents per dining area (min)", 20, 200, 44, 1)
         resident_max = c4.number_input("Residents per dining area (max)", 20, 220, 56, 1)
         seed = c5.number_input("Random seed", 1, 999999, 42, 1)
+
+        d1, d2 = st.columns(2)
+        intake_days = d1.number_input("Resident-record history (days)", 7, 120, 30, 1)
+        residents_per_area = d2.number_input("Synthetic residents per dining area", 4, 50, 12, 1)
 
         active_locations = fetchone(
             """SELECT COUNT(*) n FROM facilities f JOIN service_areas sa ON sa.facility_id=f.id
@@ -74,15 +76,15 @@ def page():
             f"Estimated dataset size: approximately **{estimate:,} transactions** across {effective_locations} service areas. "
             "Each scheduled menu item produces one production-waste and one plate-waste observation."
         )
-        replace = st.checkbox("Replace the existing synthetic ML dataset", value=True)
+        replace = st.checkbox("Replace existing synthetic data", value=True)
 
-        if st.button("Generate synthetic ML dataset", type="primary", use_container_width=True):
+        if st.button("Generate synthetic data", type="primary", use_container_width=True):
             if end < start:
                 st.error("End date must be on or after start date.")
             elif resident_max < resident_min:
                 st.error("Maximum residents must be greater than or equal to minimum residents.")
             else:
-                with st.spinner("Generating menu-aligned synthetic records..."):
+                with st.spinner("Generating menu-aligned waste data and synthetic resident records..."):
                     result = generate_synthetic_ml_data(
                         GenerationConfig(
                             start_date=start,
@@ -95,18 +97,26 @@ def page():
                             replace_existing=replace,
                         )
                     )
-                log_action(user["id"], "GENERATE_SYNTHETIC_ML", str(result))
+                    intake_end = min(end, date.today() - timedelta(days=1))
+                    if intake_end >= start:
+                        intake_start = max(start, intake_end - timedelta(days=int(intake_days) - 1))
+                        intake_result = generate_synthetic_resident_data(
+                            intake_start, intake_end, residents_per_area=int(residents_per_area), seed=int(seed)
+                        )
+                    else:
+                        intake_result = {"residents": 0, "orders": 0, "meals_recorded": 0, "items_recorded": 0}
+                log_action(user["id"], "GENERATE_SYNTHETIC_DATA", f"waste={result}; intake={intake_result}")
                 st.success(
-                    f"Generated {result['transactions']:,} clearly-labelled synthetic transactions from "
-                    f"{result['menu_rows_used']:,} scheduled menu observations across {result['days']} days."
+                    f"Generated {result['transactions']:,} synthetic food-waste transactions and "
+                    f"{intake_result['meals_recorded']:,} synthetic resident meal records."
                 )
                 if result["created_fallback_locations"]:
-                    st.warning("No configured real locations existed, so clearly named Synthetic Harbison locations were created for model testing.")
+                    st.warning("No configured real locations existed, so placeholder locations (Harbison Site 1, Dining Area 1...) were created for model testing.")
                 st.rerun()
 
     if summary["transactions"]:
         df = transactions_df(source="synthetic")
-        st.subheader("Synthetic dataset quality check")
+        st.subheader("Synthetic waste-data quality check")
         q1, q2, q3, q4 = st.columns(4)
         q1.metric("Production rows", f"{len(df[df.waste_type.eq('Production Waste')]):,}")
         q2.metric("Plate rows", f"{len(df[df.waste_type.eq('Plate Waste')]):,}")
@@ -132,17 +142,18 @@ def page():
         )
 
         st.download_button(
-            "Download synthetic dataset CSV",
+            "Download synthetic waste CSV",
             df.to_csv(index=False).encode("utf-8"),
             "harbison_synthetic_ml_dataset.csv",
             "text/csv",
         )
 
-        with st.expander("Delete synthetic ML records"):
-            st.warning("This deletes only records created by the new synthetic ML generator. Real waste entries are not touched.")
-            confirm = st.checkbox("Confirm deletion of synthetic ML records")
-            if st.button("Delete synthetic ML dataset", disabled=not confirm):
+        with st.expander("Delete synthetic data"):
+            st.warning("This deletes generated synthetic waste records and synthetic generated resident records. Real records are not touched.")
+            confirm = st.checkbox("Confirm deletion of synthetic data")
+            if st.button("Delete synthetic data", disabled=not confirm):
                 removed = clear_synthetic_ml_data()
-                log_action(user["id"], "CLEAR_SYNTHETIC_ML", f"Removed {removed} rows")
-                st.success(f"Removed {removed:,} synthetic records.")
+                clear_synthetic_resident_data()
+                log_action(user["id"], "CLEAR_SYNTHETIC_DATA", f"Removed {removed} waste rows and synthetic resident intake records")
+                st.success(f"Removed {removed:,} synthetic waste rows and synthetic resident records.")
                 st.rerun()

@@ -2,8 +2,8 @@ import streamlit as st
 import plotly.express as px
 
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
-from src.analytics import transactions_df, filtered
+from src.styles import page_header
+from src.analytics import SOURCE_MODES, available_sources, transactions_df, filtered
 from src.db import setting, fetchone
 from .common import money, fmt_pct
 
@@ -26,20 +26,11 @@ def _rankable_items(df):
 
 
 def _source_selector():
-    syn_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE synthetic_run_id IS NOT NULL")["n"]
-    real_n = fetchone("SELECT COUNT(*) n FROM transactions WHERE is_demo=0")["n"]
-    opts = []
-    if syn_n:
-        opts.append("Synthetic ML data")
-    if real_n:
-        opts.append("Real Harbison data")
-    if syn_n and real_n:
-        opts.append("Real + synthetic")
+    opts = available_sources()
     if not opts:
         return None, None
     label = st.selectbox("Data source", opts, index=0)
-    mode = {"Synthetic ML data": "synthetic", "Real Harbison data": "real", "Real + synthetic": "combined"}[label]
-    return label, mode
+    return label, SOURCE_MODES[label]
 
 
 def page():
@@ -47,22 +38,15 @@ def page():
     page_header(
         "ANALYTICS",
         "Food Waste Dashboard",
-        "Explore real operational records or clearly-labelled synthetic ML data generated from the Harbison menu.",
+        "Analyse either real operational food-waste records or clearly-labelled synthetic data generated from the Harbison menu.",
     )
-    render_source_badges([
-        ("Harbison menu context", "source-green"),
-        ("Synthetic data supported for model development", "source-blue"),
-        ("Real and synthetic records stay separate", "source-orange"),
-    ])
 
     source_label, source_mode = _source_selector()
     if not source_mode:
-        st.info("No waste records are available. Generate a Synthetic ML Dataset or enter/import real Harbison waste records.")
+        st.info("No waste records are available. Generate synthetic data or enter/import real waste records.")
         return
     if source_mode == "synthetic":
-        st.info("This dashboard is showing simulated records for prototype analysis and ML development, not measured Harbison waste.")
-    elif source_mode == "combined":
-        st.warning("This view combines simulated and real data. Keep them separate when reporting measured Harbison outcomes.")
+        st.info("This dashboard is showing simulated food-waste records for prototype analysis and ML development, not measured Harbison waste.")
 
     df = transactions_df(source=source_mode)
     if df.empty:

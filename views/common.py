@@ -17,6 +17,7 @@ def role_banner(user):
         "manager":"Foodservice Manager",
         "kitchen":"Kitchen Staff",
         "dietitian":"Dietitian / Analyst",
+        "care":"Nurse / Care Worker",
     }
     st.markdown(
         f'<span class="role-chip">Signed in as {user["display_name"]} · {labels.get(user["role"],user["role"])}</span>',

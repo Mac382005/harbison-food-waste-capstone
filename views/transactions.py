@@ -1,6 +1,6 @@
 import streamlit as st
 from src.auth import require_roles
-from src.styles import page_header, render_source_badges
+from src.styles import page_header
 from src.analytics import transactions_df, filtered
 from src.db import execute, log_action
 
@@ -8,7 +8,6 @@ from src.db import execute, log_action
 def page():
     user = require_roles("admin", "manager", "kitchen", "dietitian")
     page_header("AUDITABLE DATA", "Transaction Log", "Review real Harbison waste entries, who recorded them, and export filtered records.")
-    render_source_badges([("Real operational records", "source-green")])
 
     df = transactions_df(include_demo=False)
     if df.empty:

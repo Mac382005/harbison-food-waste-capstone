@@ -23,5 +23,5 @@ if __name__ == "__main__":
     print("Harbison menu rows:", menu_rows)
     print("Existing synthetic ML rows:", synthetic_rows)
     print("New ML schema is ready; real and synthetic transactions remain separated.")
-    print("Next: run `python generate_ml_data.py --start 2026-03-01 --end 2026-09-30 --seed 42`.")
+    print("Next: run `python generate_synthetic_data.py --start 2026-03-01 --end 2026-09-30 --seed 42 --intake-days 30 --residents-per-area 12`.")
     print("Then run `python -m streamlit run app.py`.")
