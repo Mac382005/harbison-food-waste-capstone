@@ -1,0 +1,6 @@
+id,username,display_name,role,password_hash,active,created_at
+1,admin,System Administrator,admin,[REDACTED],1,2026-10-08T18:09:32
+2,manager,Foodservice Manager,manager,[REDACTED],1,2026-10-08T18:09:33
+3,kitchen,Kitchen Staff,kitchen,[REDACTED],1,2026-10-08T18:09:33
+4,dietitian,Dietitian / Analyst,dietitian,[REDACTED],1,2026-10-08T18:09:33
+5,care,Care Worker (demo),care,[REDACTED],1,2026-10-08T20:17:11

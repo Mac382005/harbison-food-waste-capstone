@@ -1,0 +1,479 @@
+id,name,category_id,manual_cost_per_kg,active
+1,Porridge,1,,1
+2,Roast Chicken,2,,1
+3,Steamed Vegetables,3,,1
+4,Beef Stew,2,,1
+5,Fruit Salad,5,,1
+421,Porridge with Banana,421,,1
+423,Steamed Broccoli,423,,1
+425,Chicken and Vegetable Soup,2,,1
+426,Brown Rice,423,,1
+427,Vanilla Custard,5,,1
+428,Scrambled Eggs on Toast,421,,1
+429,Baked Fish with Lemon,2,,1
+430,Roast Carrots,423,,1
+431,Rice Pudding,5,,1
+433,Roasted Pumpkin,423,,1
+434,Yoghurt with Fruit,5,,1
+435,Weet-Bix and Milk,421,,1
+436,Beef and Vegetable Casserole,2,,1
+437,Mashed Potato,423,,1
+438,Apple Crumble,5,,1
+439,Creamy Mushroom Pasta,2,,1
+440,Garden Salad,423,,1
+441,Peach Sponge,5,,1
+442,French Toast,421,,1
+443,Vegetable Lasagne,2,,1
+444,Green Beans,423,,1
+446,Baked Salmon,2,,1
+447,Peas and Corn,423,,1
+448,Semolina Pudding,5,,1
+449,Oatmeal with Berries,421,,1
+450,Turkey and Gravy,2,,1
+453,Lentil and Vegetable Soup,2,,1
+454,Sweet Potato Mash,423,,1
+455,Baked Pears,5,,1
+456,Baked Beans on Toast,421,,1
+457,Chicken Pasta Bake,2,,1
+460,Cottage Pie,2,,1
+461,Mixed Vegetables,423,,1
+463,Yoghurt and Muesli,421,,1
+464,Pumpkin and Chickpea Curry,2,,1
+467,Chicken Stir-Fry,2,,1
+471,Lamb Shepherds Pie,2,,1
+474,Pumpkin Soup,2,,1
+478,Tuna Mornay,2,,1
+481,Vegetable Quiche,2,,1
+485,Beef Meatballs,2,,1
+488,Beef Stroganoff,2,,1
+492,Vegetable Frittata,2,,1
+495,Chicken Noodle Soup,2,,1
+499,Chicken Risotto,2,,1
+502,Macaroni Cheese,2,,1
+506,Mild Beef Curry,2,,1
+509,Fish Pie,2,,1
+513,Spinach and Ricotta Pasta,2,,1
+516,Minestrone Soup,2,,1
+30826,Jelly,30826,,1
+30827,Soup,30826,,1
+30828,Ice cream,30826,,1
+57673,Scotch Broth,69818,,1
+57674,Chicken and Sweet Corn Soup,69818,,1
+57676,Vegetable and Barley Soup,69818,,1
+57677,Beef and Vegetable Soup,57673,,1
+57678,Potato and Leek Soup,69818,,1
+57679,Cauliflower and Bacon Soup,57673,,1
+57680,Mushroom Soup,69818,,1
+57681,Roast Pumpkin Soup,69818,,1
+57682,Pea and Ham Soup,69818,,1
+57683,Tomato Soup,69818,,1
+57684,Honey Carrot Soup,57673,,1
+57685,Biscuits,30826,,1
+57686,Corn Flakes,30826,,1
+57687,Cake (slice),30826,,1
+57688,Croissant,30826,,1
+57689,Fruit salad,30826,,1
+57690,Vanilla custard,30826,,1
+57691,Jatz crackers,30826,,1
+57692,Toasted muesli,30826,,1
+57693,Raspberry jelly,30826,,1
+57694,Vanilla ice cream,30826,,1
+57695,Orange jelly,30826,,1
+57696,Chocolate ice cream,30826,,1
+57697,Weet-Bix,30826,,1
+57698,Rice Bubbles,30826,,1
+57699,Strawberry jelly,30826,,1
+71209,"Continental Breakfast - Including Select Cereals, Porridge, Toast or Bread, Yoghurt.",421,,1
+71216,Canadian Pancakes - Bacon and Maple Syrup,421,,1
+71217,"Scrambled Eggs, pork chipolatas and Mushroom",421,,1
+71218,Harbison Morning Tea,69755,,1
+71225,Chicken Pie,69762,,1
+71226,Chicken Parmigana,69762,,1
+71227,Roast Lamb with Rosemary and Gravy,69762,,1
+71228,Creamy Tarragon Chicken,69762,,1
+71229,Crunchy House Battered Fish with Lemon + Tartare,69762,,1
+71230,Bangers (Beef Sausages),69762,,1
+71231,Roast Morroccan Chicken with Gravy,69762,,1
+71232,"Traditional Mixed Grill (Lamb Sausage, and Pork Rissole, Grilled Tomato & onion)",69762,,1
+71233,Roast Vegetable Lasagne,69762,,1
+71234,Roast Pork with Gravy,69762,,1
+71235,Steak Diane,69762,,1
+71236,"Spinach, Pumpkin and Fetta Frittata",69762,,1
+71237,Pork and Apple Cider Casserole,69762,,1
+71238,Corned Beef Silverside with White Sauce,69762,,1
+71239,"Carrots, peas",69776,,1
+71240,Caesar Salad,69776,,1
+71241,Whole Baby Beans,69776,,1
+71242,Green Beans and Carrots,69776,,1
+71244,Peas and Carrots,69776,,1
+71245,"Brussel Sprouts, Carrots",69776,,1
+71246,Roasted Chat Potatoes with Butter and Parsley,69783,,1
+71247,Chips,69783,,1
+71248,Roast Potato and Pumpkin,69783,,1
+71252,Potato Bake,69783,,1
+71253,Salad or Mixed Brown or White Sandwiches,69790,,1
+71260,Vegetarian Pie,69797,,1
+71261,Veggie Lasagne,69797,,1
+71262,Vegetarian Nut Loaf,69797,,1
+71263,Creamy Tarragon Vegetarian,69797,,1
+71264,"Pumpkin, spinach and Fetta Frittata",69797,,1
+71265,Veggie Sausage,69797,,1
+71266,"Roast Vegetable Medley (parsnip,zucchini,eggplant,capsicum)",69797,,1
+71267,Tiramisu,69804,,1
+71268,Warm Custard with Cinnamon Apple and Pears,69804,,1
+71269,vanilla Ice-cream with choc topping,69804,,1
+71270,Peaches and Cream with Raspberry Coulis,69804,,1
+71271,Sticky date Pudding with Butterscotch sauce and Custard,69804,,1
+71272,Warm Chocolate Brownie with Chocolate Sauce and Cream,69804,,1
+71273,Strawberry Ice-cream,69804,,1
+71274,Harbison Afternoon Tea,69755,,1
+71287,Cream of Cauliflower Soup,69818,,1
+71288,Sweet n Sour Fish,69762,,1
+71289,Savoury Mince Stuffed Spuds with Cheese and Sour Cream,69762,,1
+71290,Honey Rosemary Roasted Chicken,69762,,1
+71291,Curry Prawns,69762,,1
+71292,Pizza Night - Assorted Toppings on Pizza,69762,,1
+71293,Chicken and Leek Crepe with Cheese,69762,,1
+71294,Irish Stew (Lamb),69762,,1
+71295,Broccoli and Bok Choy,69776,,1
+71296,Minted Peas and Carrots,69776,,1
+71297,Honey Carrots and Brussel Sprouts,69776,,1
+71299,"Veggies on pizza - Mushrooms, Onion, Capsicum, Pineapple.",69776,,1
+71300,Carrots and Broccoli,69776,,1
+71301,Brussel Sprouts,69776,,1
+71302,Steamed Rice,69783,,1
+71303,Spud stuffed,69783,,1
+71305,Coconut Rice,69783,,1
+71306,Garlic Bread,69783,,1
+71307,Roast Potato,69783,,1
+71308,Roast Sweet Potato and Soda Bread,69783,,1
+71309,Sweet and Sour Vegetables,69797,,1
+71310,Savoury Veggie Mince Stuffed Spud,69797,,1
+71311,Vegetarian Pizza,69797,,1
+71312,Curried Vegetables,69797,,1
+71313,Chick Pea and Lentil Bolognaise,69797,,1
+71314,Veggie Mornay Crepe,69797,,1
+71315,Veggie Irish Stew with Lentils and Soda Bread,69797,,1
+71316,"Yoghurt, Ice Cream, Seasonal Fruit",69804,,1
+71330,Eggs Benedict on Engish muffin with Hollandaise Sauce,421,,1
+71331,Pancakes with maple and Whipped Cream,421,,1
+71339,Barramundi with Lemon Sauce,69762,,1
+71340,Chicken Wings in Texan BBQ Sticky Sauce,69762,,1
+71342,Tikka Masala Chicken,69762,,1
+71343,Crumbed Fish with Lemon + Tartare Sauce,69762,,1
+71344,Chicken Stroganoff,69762,,1
+71345,"Roast Beef with Herbs, Red Wine and Gravy",69762,,1
+71346,Chicken Cacciatore,69762,,1
+71347,Beef Cheeseburger Slider,69762,,1
+71349,Satay Beef,69762,,1
+71350,Crumbed Pork,69762,,1
+71351,Beef and Tomato Casserole,69762,,1
+71352,Roast Turkey with Cranberry and Gravy,69762,,1
+71353,Carrots and Peas,69776,,1
+71357,Coleslaw,69776,,1
+71359,"Carrots, Cauliflower and Broccoli",69776,,1
+71362,Roast potato and Roast Pumpkin,69783,,1
+71366,Roast Potato and Roast Sweet Potato,69783,,1
+71374,Veggie Cacciatore,69797,,1
+71375,Veggie Patty Slider,69797,,1
+71376,Roast Vegetable Stack with pesto,69797,,1
+71377,Veggie & Tofu Tikka Masala,69797,,1
+71378,Zucchini & Corn Fritters,69797,,1
+71379,Veggie Ragu with Lentils,69797,,1
+71381,Pavlova,69804,,1
+71382,Tapioca Pudding,69804,,1
+71383,Vanilla Ice-cream with strawberry topping,69804,,1
+71384,Apple Crumble with Custard,69804,,1
+71385,Bread and Butter Pudding with Cream,69804,,1
+71386,Butterscotch Self-Saucing Pudding with Custard,69804,,1
+71387,Choc Ice-cream,69804,,1
+71400,Roast Tomato Soup,69818,,1
+71402,Pork in Plum Sauce,69762,,1
+71403,Lancashire Hotpot,69762,,1
+71404,Hokkien Noodles Stir Fry with Prawns and Spring Roll,69762,,1
+71405,Scrambled Eggs with Cheese and Chives,69762,,1
+71406,Sweet Lamb Curry,69762,,1
+71407,Tuna Fish Cakes,69762,,1
+71408,Honey Mustard Chicken,69762,,1
+71409,"Peas, Broccoli, Carrots",69776,,1
+71411,"Stir Fry: Capsicum, Zucchini, Celery, Onion, Carrot, Shallots",69776,,1
+71412,Wilted Spinach Leaves and Roast Tomato,69776,,1
+71413,"Vegetables in Curry: Potato, Sweet Potato, Onion, Carrot, Peas",69776,,1
+71414,Green Beans and Honey Carrots,69776,,1
+71415,Carrots and Beans,69776,,1
+71416,Fried Rice,69783,,1
+71417,Mash Potato,69783,,1
+71418,Noodles,69783,,1
+71419,Hash Brown,69783,,1
+71420,Rice (Potatoes in Curry),69783,,1
+71421,Warm Potato Salad,69783,,1
+71423,Vegetables in Plum sauce,69797,,1
+71424,Vegetarian Lancashire Hotpot,69797,,1
+71425,Veggie Noodles and spring roll,69797,,1
+71426,Cheese and Tomato Omelette,69797,,1
+71427,Sweet Vegetable Curry With Tofu,69797,,1
+71428,Chick pea & Veggie Patties,69797,,1
+71429,Stuffed Capsicum,69797,,1
+71444,Poached Eggs w/ Grilled Tomato and Bacon,421,,1
+71453,Butter Chicken,69762,,1
+71454,Lemon Pepper Fish with Lemon Sauce,69762,,1
+71458,Creamy Pesto Chicken Pasta and Sundried Tomato,69762,,1
+71459,Roast Pork with Crackling and Gravy,69762,,1
+71460,Winter Lamb Stew,69762,,1
+71461,Lamb's Fry,69762,,1
+71462,Corned Beef Silverside,69762,,1
+71463,Chicken Scallopini,69762,,1
+71464,Zucchini and Corn Fritters,69797,,1
+71465,Macaroni Cheese Pasta,69797,,1
+71466,Roast Lamb with Rosemary seved with Mint Jelly and Gravy,69762,,1
+71467,"Beans, Carrots",69776,,1
+71468,Broccoli and Carrots,69776,,1
+71469,Roast Zucchini and Carrots,69776,,1
+71472,Broccoli,69776,,1
+71473,Cauliflower Mornay,69776,,1
+71474,Tumeric Rice,69783,,1
+71476,Creamy Potato Bake,69783,,1
+71479,Pasta,69783,,1
+71480,Roast Potato and Sweet Potato,69783,,1
+71488,Curried Vegetables & Tofu,69797,,1
+71489,Eggplant Parmi,69797,,1
+71490,Roast Veg stack with Pesto,69797,,1
+71491,Stuffed Mushroom,69797,,1
+71494,"Roast Vegetable Medley (parsnip,zucchini,eggplant,capsicum",69797,,1
+71497,Vanilla Ice-cream with caramel topping,69804,,1
+71498,Jelly with Fruit and Custard,69804,,1
+71499,Lemon Pudding with Lemon Cream,69804,,1
+71500,Warm Custard and Banana,69804,,1
+71509,Potato Leek and Bacon,69818,,1
+71510,Chicken Sweet Corn Soup,69818,,1
+71511,Cream Of Mushroom,69818,,1
+71515,Roasted Pumpkin Soup,69818,,1
+71516,Quiche Lorraine,69762,,1
+71517,Spaghetti Bolognese,69762,,1
+71518,Curried Prawns,69762,,1
+71519,Sweet and Sour Pork,69762,,1
+71520,Apricot Chicken,69762,,1
+71521,Beef Mince and Potato Pies with Gravy,69762,,1
+71522,Chicken Sausages with onion Gravy,69762,,1
+71523,Warm Roast Veg Salad with Italian Glaze,69776,,1
+71526,"Stir Fry Vegetables - Carrot, Onion, Bok Choy, Capsicum",69776,,1
+71527,Peas and Beans,69776,,1
+71528,Mushy Peas,69776,,1
+71530,Potato In Salad,69783,,1
+71532,Rice,69783,,1
+71533,Hokkien Noddles,69783,,1
+71535,Mashed Potato on Pie,69783,,1
+71537,Roast Vegetable Quiche,69797,,1
+71538,Veggie Mince Bolognaise or Napolitana Sauce with Zucchini,69797,,1
+71539,Curried Veggies,69797,,1
+71540,Sweet and Sour Vegetables with Hokkien Noodles,69797,,1
+71541,Apricot Fish,69797,,1
+71542,Veggie Pie,69797,,1
+71543,Veggie Sausages,69797,,1
+71558,"Poached Eggs, Pork Chipoattas and Baked Beans",421,,1
+71559,Bacon and egg roll with BBQ Sauce,421,,1
+71567,Chicken Tikka Masala,69762,,1
+71568,Lamb Shanks,69762,,1
+71570,Sweet Tomato Lamb Curry,69762,,1
+71571,Crumbed Fish with Lemon + Tartare,69762,,1
+71572,"Roasted Vegetable Napoletana, Pasta Spirals with Parmesan Cheese",69797,,1
+71573,Roast Morroccan Chicken,69762,,1
+71575,Atlantic Salmon Grilled with Lemon Pepper,69762,,1
+71579,Lamb Ragout Pasta with Napoli Sauce,69762,,1
+71581,"Peas, Broccoli and Carrots",69776,,1
+71583,Roast Zucchini & Peas,69776,,1
+71587,Broccoli and Cauliflour Cheese Mornay,69776,,1
+71594,Roast Potatoes and Sweet Potatoes,69783,,1
+71602,Chick Pea Tikka Masala,69797,,1
+71603,Ratatouille,69797,,1
+71605,Sweet Tomato Veg Curry with Tofu,69797,,1
+71606,Crumbed Vegetable Pattie,69797,,1
+71610,Bread and Butter Pudding with Custard,69804,,1
+71611,Ice-cream and caramel topping,69804,,1
+71612,Apple and Rhubarb Crumble with Custard,69804,,1
+71614,Chocolate Self-Saucing Pudding with Cream,69804,,1
+71623,Vegetable + Barley Soup,69818,,1
+71629,Cream of Mushroom Soup,69818,,1
+71630,Shepherds Pie,69762,,1
+71631,Hoisin Pork,69762,,1
+71632,Creamy Garlic Prawn Fettuccini,69762,,1
+71633,Curry Savoury Mince,69762,,1
+71634,Lamb Chops in Italian Sauce,69762,,1
+71635,Honey Chicken with Fried Rice,69762,,1
+71636,Pork and Fennel Sausage,69762,,1
+71637,"Broccoli, Carrots and Cauliflower",69776,,1
+71638,Veggie Stirfry,69776,,1
+71639,"Peas, Beans and Carrots",69776,,1
+71640,"Peas, Carrots and Broccoli",69776,,1
+71642,Bok Choy and Veg in Fried Rice,69776,,1
+71644,Mashed Potato on top of Pie,69783,,1
+71647,Small Roast Potato Pieces,69783,,1
+71651,Savoury Veg Mince Shepherds Pie,69797,,1
+71652,Hoisin Veg,69797,,1
+71653,Creamy Garlic Lentils and fettuccini,69797,,1
+71654,Veggie Savoury Mince,69797,,1
+71655,Tomato Veg Casserole,69797,,1
+71656,Honey Vegetable and Fried Rice with scrambed egg,69797,,1
+71665,"Continental Breakfast - Including Select Cereals, Porridge, Yoghurt.",421,,1
+71673,Scrambled Eggs and pork chipolatas,421,,1
+71681,"Traditional Mixed Grill (Lamb Sausage, and Pork Rissole, Grilled Tomato",69762,,1
+71682,Chicken Thigh Parmigana,69762,,1
+71685,Grilled Fish with Lemon + Hollandaise,69762,,1
+71688,Chicken Mornay,69762,,1
+71695,"Carrots, Puree Peas",69776,,1
+71696,"Broccoli, Cauliflower and Carrots",69776,,1
+71697,Carrots and Puree Peas,69776,,1
+71699,Cauliflower and Broccoli,69776,,1
+71700,Puree Peas and Carrots,69776,,1
+71701,Carrots,69776,,1
+71702,Steamed Chat Potatoes with Butter and Parsley,69783,,1
+71706,Mashed Pumpkin,69783,,1
+71709,Vegetarian Casserole,69797,,1
+71715,"Steamed Vegetable Medley (parsnip,zucchini,eggplant,capsicum)",69797,,1
+71741,Chicken Napoletana Pasta Risoni,69762,,1
+71745,Puree Minted Peas and Carrots,69776,,1
+71746,"Honey Carrots, Broccoli and Cauliflower",69776,,1
+71748,"Broccoli, Pea Puree",69776,,1
+71755,Risoni Pasta,69783,,1
+71756,Steamed Potato,69783,,1
+71757,Mashed Sweet Potato and Soda Bread no crust.,69783,,1
+71760,Honey Veggies,69797,,1
+71765,"Yoghurt, Ice Cream, Diced Fruit Salad",69804,,1
+71779,Eggs Benedict with Hollandaise Sauce,421,,1
+71789,Chicken Thigh in Texan BBQ Sticky Sauce,69762,,1
+71792,Grilled Fish with Lemon + Hollandaise Sauce,69762,,1
+71796,Beef Rissoles in Gravy,69762,,1
+71799,Pork Medallion,69762,,1
+71804,Broccoli and Cauliflower,69776,,1
+71807,Broccoli and Puree Peas,69776,,1
+71810,Diced Steamed Potato,69783,,1
+71811,Diced Steamed potato and Pumpkin,69783,,1
+71815,Diced Steamed Potato and Sweet Potato,69783,,1
+71818,Steamed Vegetable Stack with pesto,69797,,1
+71820,Zucchini & Corn Frittata,69797,,1
+71826,Stewed Cinnamon Apples with Custard,69804,,1
+71846,Hokkien Noodles Stir Fry with Prawns,69762,,1
+71847,Scrambled Eggs with Cheese,69797,,1
+71849,Tuna Fish Cakes No Crumb,69762,,1
+71853,"Steamed Broccoli, Cauliflower and Carrots",69776,,1
+71854,Tomato Concasse,69776,,1
+71855,"Vegetables in Curry: Potato, Sweet Potato, Onion, Carrot",69776,,1
+71856,Honey Carrots,69776,,1
+71863,Warm Diced Potato Salad,69783,,1
+71867,Veggie Noodles,69797,,1
+71886,Poached Eggs w/ Bacon,421,,1
+71900,Creamy Pesto Chicken Pasta,69762,,1
+71906,Zucchini and Corn Frittata,69797,,1
+71911,Steamed Zucchini and Carrots,69776,,1
+71921,Pasta Risoni,69783,,1
+71925,Steamed Veg stack with Pesto,69797,,1
+71951,Quiche Frittata,69762,,1
+71952,Risoni Bolognese,69762,,1
+71956,Savoury Gravy Mince and Potato,69762,,1
+71957,Chicken Sausages with Gravy,69762,,1
+71958,Warm Steamed Veg Salad with Italian Glaze,69776,,1
+71961,"Steamed Vegetables - Carrot, Onion, Broccoli, Cauliflower",69776,,1
+71965,Diced Potato In Salad,69783,,1
+71972,Roast Vegetable Frittata,69797,,1
+71993,"Poached Eggs, Pork Chipolatas and Baked Beans",421,,1
+71994,Scrambled Eggs with Bacon,421,,1
+72007,"Steamed Vegetable Napoletana, Pasta Risoni with Parmesan Cheese",69797,,1
+72013,Pork Medallions,69762,,1
+72018,Steamed Zucchini & Peas,69776,,1
+72025,Steamed Diced Potatoes and Pumpkin,69783,,1
+72029,Steamed Diced Potatoes and Sweet Potatoes,69783,,1
+72034,Vegetable Pattie,69797,,1
+72036,"Steamed Vegetable Medley (parsnip,zucchini,eggplant,capsicum",69797,,1
+72060,Creamy Garlic Prawn Pasta,69762,,1
+72063,Honey Chicken,69762,,1
+72066,"Steamed Broccoli, Cauliflower, Carrots",69776,,1
+72081,Creamy Garlic Lentils and Risoni,69797,,1
+72084,Honey Vegetable and Steamed Rice with scrambed egg,69797,,1
+72093,"Weetbix, Puree Porridge, Yoghurt.",421,,1
+72107,Canadian Pancakes,421,,1
+72109,Scrambled Eggs,421,,1
+72111,"Custard, Yoghurt, Ice Cream",69755,,1
+72125,"Chicken Mornay with Mashed Potato, Carrots and Puree Peas",69762,,1
+72126,"Chicken Thigh with Parmigana Sauce, Broccoli, Cauliflower and Carrots",69762,,1
+72127,"Roast Lamb with Gravy, Mashed Potato, Pumpkin, Peas and Carrots",69762,,1
+72128,"Steak Diane with Mashed Potato, Broccoli and Carrots",69762,,1
+72129,"Grilled Fish with Lemon + Hollandaise, Mashed Pumpkin, Cauliflower and Broccoli",69762,,1
+72130,"Pork and Apple Cider Casserole, Mashed Potato, Peas and Carrots",69762,,1
+72131,"Corned Beef Silverside with White Sauce, Mashed Potato, Carrots and Broccoli",69762,,1
+72153,"Custard, Yoghurt, Ice Cream or Blended Cake with Cream",69755,,1
+72181,"Sweet n Sour Fish with Mashed Potato, Carrots and Broccoli",69762,,1
+72182,"Savoury Mince, Puree Peas, Carrots and Mashed Potato",69762,,1
+72183,"Honey Rosemary Roasted Chicken, Mashed Potato, Carrots, Broccoli and Cauliflower",69762,,1
+72184,"Curried Fish with Mashed Potato, Puree Peas and Carrots",69762,,1
+72185,Napoletana Chicken with Puree Peas and Carrots,69762,,1
+72186,"Chicken and Leek Casserole with Cheese, Mashed Potato, Carrots and Broccoli",69762,,1
+72187,"Irish Stew (Lamb), Carrots and Puree Peas and Mashed Sweet Potato",69762,,1
+72188,"Sweet n Sour Fish with Broccoli, Carrots and Steamed Rice",69762,,1
+72191,"Curried Fish with Rice, Puree Peas and Carrots",69762,,1
+72192,Napoletana Pasta Risoni with Puree Peas and Broccoli,69762,,1
+72205,Veggie Mornay,69797,,1
+72207,Veggie Irish Stew with Lentils,69797,,1
+72253,"Barramundi with Lemon Sauce with Mashed Potato, Carrots and Peas",69762,,1
+72254,"Chicken Thigh in Texan BBQ Sticky Sauce with Mashed Potato, Broccoli and Carrots",69762,,1
+72255,"Roast Pork with Gravy, Mashed Pumpkin, Potato, Broccoli and Cauliflower",69762,,1
+72256,"Tikka Masala Chicken with Mashed Potato, Carrots and Broccoli",69762,,1
+72257,"Grilled Fish with Lemon + Hollandaise Sauce with Mashed Potato, Peas and Carrots",69762,,1
+72258,"Chicken Stroganoff with Sweet Potato Mash, Broccoli and Peas",69762,,1
+72259,"Roast Beef with Red Wine and Gravy, Mashed Potato, Carrots, Cauliflower, and Broccoli",69762,,1
+72263,"Tikka Masala Chicken with Rice, Carrots and Broccoli",69762,,1
+72323,"Pork in Plum Sauce with Mashed Potato, Peas, Broccoli and Carrots",69762,,1
+72324,"Lancashire Hotpot with Mashed Potato, Carrots and Broccoli",69762,,1
+72325,"Asian Steamed Fish with Parsnip Mash, Carrots and Peas",69762,,1
+72327,"Sweet Lamb Curry with Mashed Potato, Carrots and Broccoli",69762,,1
+72328,"Tuna Fish Cakes No Crumb, Mashed Potato, Carrots and Peas",69762,,1
+72329,"Honey Mustard Chicken with Mashed potato, Carrots and Broccoli",69762,,1
+72330,"Pork in Plum Sauce with steamed Rice, Peas, Broccoli and Carrots",69762,,1
+72334,"Sweet Lamb Curry with Rice, Carrots and Broccoli",69762,,1
+72379,Canadian Pancakes and Maple Syrup,421,,1
+72395,"Butter Chicken with Mashed Potato, Carrots and Peas",69762,,1
+72396,"Lemon Pepper Fish with Lemon Sauce, Mashed Potato, Broccoli and Carrots",69762,,1
+72397,"Roast Morroccan Chicken with Gravy with Mashed Potato, Carrots and Broccoli",69762,,1
+72398,"Steak Diane with Sweet Potato Mash, Broccoli and Carrots",69762,,1
+72399,"Grilled Fish with Lemon + Hollandaise with Mashed Potato, Carrots and Peas",69762,,1
+72400,"Creamy Pesto Chicken with Mashed Potato, Broccoli, Cauliflower and Carrots",69762,,1
+72401,"Roast Lamb with Gravy, Mashed Potato, Sweet Potato and Cauliflower",69762,,1
+72402,"Butter Chicken with Rice, Carrots and Peas",69762,,1
+72407,"Creamy Pesto Chicken Risoni Pasta, Broccoli and Carrots",69762,,1
+72465,"Scrambled Eggs with cheese, Cauliflower Puree, Broccoli and Carrots",69762,,1
+72466,"Bolognese with Mashed Potato, Peas and Carrots",69762,,1
+72467,"Curried Fish with Mashed Potato, Broccoli and Carrots",69762,,1
+72468,"Sweet and Sour Pork with Mashed Pumpkin, Broccoli and Peas",69762,,1
+72469,"Apricot Chicken with Mashed Potato, Peas and Carrots",69762,,1
+72470,"Savoury Gravy Mince with Mashed Potato, Peas and Carrots",69762,,1
+72471,"Chicken Sausages with Gravy, Mashed Potato, Broccoli and Carrots",69762,,1
+72473,Risoni Bolognese with Peas and Carrots,69762,,1
+72474,"Curried Fish with Rice, Broccoli and Carrots",69762,,1
+72476,"Apricot Chicken with Rice, Peas and Carrots",69762,,1
+72539,"Chicken Tikka Masala with Mashed Potato, Peas, Broccoli and Carrots",69762,,1
+72540,"Atlantic Salmon with Mashed Potato, Broccoli and Carrots",69762,,1
+72541,"Roast Beef and Gravy with Mashed Pumpkin, Peas and Carrots",69762,,1
+72542,"Sweet Tomato Lamb Curry with Mashed Potato, Peas and Carrots",69762,,1
+72543,"Grilled Fish with Lemon + Hollandaise, Mashed Potato, Broccoli, Cauliflower and Carrots",69762,,1
+72544,"Lamb Ragout Napoli Sauce, Mashed Potato, Broccoli and Carrots",69762,,1
+72545,"Roast Morroccan Chicken with Mashed Sweet Potato, Cauliflower and Broccoli",69762,,1
+72546,"Chicken Tikka Masala with Rice, Peas, Broccoli and Carrots",69762,,1
+72549,"Sweet Tomato Lamb Curry with Rice, Peas and Carrots",69762,,1
+72551,"Lamb Ragout Pasta Riconi with Napoli Sauce, Broccoli and Carrots",69762,,1
+72609,"Shepherds Pie with Mashed Potato, Broccoli, Carrots and Cauliflower",69762,,1
+72610,Hoisin Pork with Mashed Potato Broccoli and Carrots,69762,,1
+72611,"Fish in Garlic Cream Sauce with Mashed Potato, Peas and Carrots",69762,,1
+72612,"Curry Savoury Mince with Mashed Potato, Peas, Carrots and Broccoli",69762,,1
+72613,"Lamb Chops in Italian Sauce with Mashed Potato, Broccoli and Carrots",69762,,1
+72614,"Honey Chicken with Mashed Potato, Broccoli, Cauliflower and Carrots",69762,,1
+72615,"Pork and Fennel Sausage with Gravy, Mashed Potato, Broccoli and Carrots",69762,,1
+72617,"Hoisin Pork with Rice, Broccoli and Carrots",69762,,1
+72618,"Fish in Garlic Cream Sauce with Risoni Pasta, Peas and Carrots",69762,,1
+72621,"Honey Chicken with Rice, Broccoli, Cauliflower and Carrots",69762,,1
+151850,Sliced peaches,30826,,1
+151853,SAO biscuits,30826,,1
+180243,Beef and Vegetable soup,69818,,1
+180344,Sticky Date Pudding with Butterscotch sauce and Custard,69804,,1
+180452,Roast Vegetable stack with pesto,69797,,1
+180463,Vanilla Ice Cream,69804,,1
+180880,Steamed Vegetable stack with pesto,69797,,1
+181369,Scrambled Eggs and Pork Chipolatas,421,,1

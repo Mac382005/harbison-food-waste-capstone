@@ -1,0 +1,374 @@
+id,created_at,user_id,action,details
+1,2026-10-08T18:14:15,1.0,LOGIN,Successful prototype login
+2,2026-10-08T18:14:39,1.0,LOGOUT,User logged out
+3,2026-10-08T18:15:53,1.0,LOGIN,Successful prototype login
+4,2026-10-08T18:15:58,1.0,RECONCILE_SPONSOR_DATA,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=0"
+5,2026-10-08T18:17:06,1.0,LOGIN,Successful prototype login
+6,2026-10-08T18:31:46,1.0,LOGIN,Successful prototype login
+7,2026-10-08T18:43:19,1.0,LOGIN,Successful prototype login
+8,2026-10-08T18:43:41,1.0,LOGIN,Successful prototype login
+9,2026-10-08T18:45:10,1.0,LOGIN,Successful prototype login
+10,2026-10-08T18:56:54,1.0,LOGIN,Successful prototype login
+11,2026-10-08T18:58:33,1.0,LOGIN,Successful prototype login
+12,2026-10-08T19:03:41,1.0,LOGOUT,User logged out
+13,2026-10-08T19:03:51,3.0,LOGIN,Successful prototype login
+14,2026-10-08T19:03:56,3.0,LOGOUT,User logged out
+15,2026-10-08T19:04:10,4.0,LOGIN,Successful prototype login
+16,2026-10-08T19:04:22,4.0,LOGOUT,User logged out
+17,2026-10-08T19:04:34,1.0,LOGIN,Successful prototype login
+18,2026-10-08T19:25:42,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=140"
+19,2026-10-08T19:25:44,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=140"
+20,2026-10-08T19:25:53,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+21,2026-10-08T19:25:54,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+22,2026-10-08T19:25:54,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+23,2026-10-08T19:25:55,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+24,2026-10-08T19:25:55,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+25,2026-10-08T19:25:57,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+26,2026-10-08T19:25:57,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+27,2026-10-08T19:25:59,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+28,2026-10-08T19:26:00,1.0,IMPORT_REFERENCE_UPDATE,"{'supplier_rows': 0, 'recipes': 0, 'recipe_lines': 0, 'cost_mapped_lines': 0}, menu=196"
+29,2026-10-08T19:29:14,1.0,LOGIN,Successful prototype login
+30,2026-10-08T19:31:52,1.0,LOGIN,Successful prototype login
+31,2026-10-08T19:41:35,1.0,LOGIN,Successful prototype login
+32,2026-10-08T19:42:41,1.0,LOGIN,Successful prototype login
+33,2026-10-08T19:47:02,1.0,LOGIN,Successful prototype login
+34,2026-10-08T19:48:30,1.0,LOGIN,Successful prototype login
+35,2026-10-08T19:52:59,1.0,LOGIN,Successful prototype login
+36,2026-10-08T20:13:30,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'observations': 12327, 'components': 38784, 'corrections': 3}"
+37,2026-10-08T20:19:16,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'observations': 12327, 'components': 38784, 'corrections': 3}"
+38,2026-10-08T20:19:58,5.0,LOGIN,Successful prototype login
+39,2026-10-08T20:20:04,4.0,LOGIN,Successful prototype login
+40,2026-10-08T20:21:04,5.0,LOGIN,Successful prototype login
+41,2026-10-08T20:21:10,4.0,LOGIN,Successful prototype login
+42,2026-10-08T20:21:45,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+43,2026-10-08T20:21:58,2.0,LOGIN,Successful prototype login
+44,2026-10-08T20:23:11,3.0,LOGIN,Successful prototype login
+45,2026-10-08T20:23:29,1.0,LOGIN,Successful prototype login
+46,2026-10-08T20:24:16,1.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+47,2026-10-08T20:25:34,5.0,LOGIN,Successful prototype login
+48,2026-10-08T20:25:42,5.0,INTAKE_RECORD,observation 24661
+49,2026-10-08T20:25:48,4.0,LOGIN,Successful prototype login
+50,2026-10-08T20:26:37,5.0,LOGIN,Successful prototype login
+51,2026-10-08T20:26:46,5.0,INTAKE_RECORD,observation 24662
+52,2026-10-08T20:26:52,4.0,LOGIN,Successful prototype login
+53,2026-10-08T20:27:51,5.0,LOGIN,Successful prototype login
+54,2026-10-08T20:28:00,5.0,INTAKE_RECORD,observation 24663
+55,2026-10-08T20:28:06,4.0,LOGIN,Successful prototype login
+56,2026-10-08T20:28:29,4.0,INTAKE_CORRECTION,observation 24661 -> 24664: Portion estimate corrected after checking tray
+57,2026-10-08T20:28:34,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+58,2026-10-08T20:28:40,4.0,INTAKE_REVIEW_OPEN,review 1
+59,2026-10-08T20:29:11,5.0,LOGIN,Successful prototype login
+60,2026-10-08T20:29:17,4.0,LOGIN,Successful prototype login
+61,2026-10-08T20:29:52,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+62,2026-10-08T20:30:05,2.0,LOGIN,Successful prototype login
+63,2026-10-08T20:31:18,3.0,LOGIN,Successful prototype login
+64,2026-10-08T20:31:36,1.0,LOGIN,Successful prototype login
+65,2026-10-08T20:32:23,1.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+66,2026-10-08T20:34:00,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'observations': 12327, 'components': 38784, 'corrections': 3}"
+67,2026-10-08T22:15:40,1.0,LOGIN,Successful prototype login
+68,2026-10-08T22:15:48,1.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+69,2026-10-08T22:18:54,1.0,INTAKE_REVIEW_OPEN,review 2
+70,2026-10-08T22:18:55,1.0,INTAKE_REVIEW_OPEN,review 3
+71,2026-10-08T22:18:59,1.0,INTAKE_REVIEW_OPEN,review 4
+72,2026-10-08T22:26:43,4.0,LOGIN,Successful prototype login
+73,2026-10-08T22:26:48,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+74,2026-10-08T22:27:54,4.0,LOGIN,Successful prototype login
+75,2026-10-08T22:27:59,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+76,2026-10-08T22:28:53,4.0,LOGIN,Successful prototype login
+77,2026-10-08T22:28:58,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+78,2026-10-08T22:29:41,4.0,LOGIN,Successful prototype login
+79,2026-10-08T22:29:46,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+80,2026-10-08T22:39:03,1.0,LOGIN,Successful prototype login
+81,2026-10-08T22:39:06,1.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+82,2026-10-08T22:40:33,4.0,LOGIN,Successful prototype login
+83,2026-10-08T22:40:38,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+84,2026-10-08T22:41:26,4.0,LOGIN,Successful prototype login
+85,2026-10-08T22:41:32,4.0,INTAKE_VIEW_RESIDENT,DEMO-01-001
+86,2026-10-15T09:17:47,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+87,2026-10-15T09:18:30,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+88,2026-10-15T09:19:24,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+89,2026-10-15T09:20:12,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+90,2026-10-15T09:20:23,5.0,INTAKE_RECORD,observation 43845
+91,2026-10-15T09:20:53,3.0,LOGIN,Successful prototype login (Food Waste Management)
+92,2026-10-15T09:21:12,2.0,LOGIN,Successful prototype login (Food Waste Management)
+93,2026-10-15T09:22:07,1.0,LOGIN,Successful prototype login (Food Waste Management)
+94,2026-10-15T09:23:12,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+95,2026-10-15T09:23:59,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+96,2026-10-15T09:24:10,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+97,2026-10-15T09:24:22,5.0,INTAKE_RECORD,observation 50696
+98,2026-10-15T09:24:51,3.0,LOGIN,Successful prototype login (Food Waste Management)
+99,2026-10-15T09:25:10,2.0,LOGIN,Successful prototype login (Food Waste Management)
+100,2026-10-15T09:26:06,1.0,LOGIN,Successful prototype login (Food Waste Management)
+101,2026-10-15T09:27:10,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+102,2026-10-15T09:27:19,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+103,2026-10-15T09:27:36,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+104,2026-10-15T09:27:48,5.0,INTAKE_RECORD,observation 57547
+105,2026-10-15T09:28:17,3.0,LOGIN,Successful prototype login (Food Waste Management)
+106,2026-10-15T09:28:36,2.0,LOGIN,Successful prototype login (Food Waste Management)
+107,2026-10-15T09:29:32,1.0,LOGIN,Successful prototype login (Food Waste Management)
+108,2026-10-15T09:30:36,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+109,2026-10-15T09:30:45,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+110,2026-10-15T09:32:33,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+111,2026-10-15T09:37:26,1.0,INTAKE_RECORD,observation 64398
+112,2026-10-15T09:37:50,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+113,2026-10-15T09:38:30,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+114,2026-10-15T09:38:43,5.0,INTAKE_RECORD,observation 71249
+115,2026-10-15T09:38:55,2.0,LOGIN,Successful prototype login (Food Waste Management)
+116,2026-10-15T09:40:21,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24754, 'meals_recorded': 6850, 'items_recorded': 21659}"
+117,2026-10-15T09:41:50,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+118,2026-10-15T09:42:31,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24687, 'meals_recorded': 6832, 'items_recorded': 21562}"
+119,2026-10-15T09:43:17,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+120,2026-10-15T09:44:19,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+121,2026-10-15T09:44:34,5.0,INTAKE_RECORD,observation 84932
+122,2026-10-15T09:44:47,2.0,LOGIN,Successful prototype login (Food Waste Management)
+123,2026-10-15T09:46:04,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24687, 'meals_recorded': 6832, 'items_recorded': 21562}"
+124,2026-10-15T09:47:27,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+125,2026-10-15T09:49:00,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24756, 'meals_recorded': 7200, 'items_recorded': 22823}"
+126,2026-10-15T09:52:04,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+127,2026-10-15T09:52:55,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+128,2026-10-15T10:39:48,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+129,2026-10-15T10:42:37,1.0,LOGOUT,User logged out
+130,2026-10-15T10:42:51,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+131,2026-10-15T10:42:55,4.0,INTAKE_RECORD,observation 98965
+132,2026-10-15T10:43:03,4.0,INTAKE_RECORD,observation 98966
+133,2026-10-15T10:45:40,4.0,LOGOUT,User logged out
+134,2026-10-15T10:46:22,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+135,2026-10-15T10:46:41,5.0,INTAKE_RECORD,observation 98967
+136,2026-10-15T10:46:47,5.0,INTAKE_RECORD,observation 98968
+137,2026-10-15T10:49:11,5.0,INTAKE_RECORD,observation 98969
+138,2026-10-15T10:49:14,5.0,INTAKE_RECORD,observation 98970
+139,2026-10-15T10:49:16,5.0,INTAKE_RECORD,observation 98971
+140,2026-10-15T10:49:18,5.0,INTAKE_RECORD,observation 98972
+141,2026-10-15T10:49:19,5.0,INTAKE_RECORD,observation 98973
+142,2026-10-15T10:49:21,5.0,INTAKE_RECORD,observation 98974
+143,2026-10-15T10:49:22,5.0,INTAKE_RECORD,observation 98975
+144,2026-10-15T10:49:28,5.0,INTAKE_RECORD,observation 98976
+145,2026-10-15T10:49:30,5.0,INTAKE_RECORD,observation 98977
+146,2026-10-15T10:49:32,5.0,INTAKE_RECORD,observation 98978
+147,2026-10-15T10:49:33,5.0,INTAKE_RECORD,observation 98979
+148,2026-10-15T10:49:35,5.0,INTAKE_RECORD,observation 98980
+149,2026-10-15T10:49:45,5.0,INTAKE_RECORD,observation 98981
+150,2026-10-15T10:49:47,5.0,INTAKE_RECORD,observation 98982
+151,2026-10-15T10:49:50,5.0,INTAKE_RECORD,observation 98983
+152,2026-10-15T10:49:52,5.0,INTAKE_RECORD,observation 98984
+153,2026-10-15T10:49:54,5.0,INTAKE_RECORD,observation 98985
+154,2026-10-15T10:54:27,5.0,INTAKE_RECORD,observation 98986
+155,2026-10-15T10:54:29,5.0,INTAKE_RECORD,observation 98987
+156,2026-10-15T10:54:31,5.0,INTAKE_RECORD,observation 98988
+157,2026-10-15T10:54:33,5.0,INTAKE_RECORD,observation 98989
+158,2026-10-15T10:54:35,5.0,INTAKE_RECORD,observation 98990
+159,2026-10-15T10:54:45,5.0,LOGOUT,User logged out
+160,2026-10-15T10:55:39,1.0,LOGIN,Successful prototype login (Food Waste Management)
+161,2026-10-15T10:57:25,2.0,LOGIN,Successful prototype login (Food Waste Management)
+162,2026-10-15T10:58:22,2.0,LOGIN,Successful prototype login (Food Waste Management)
+163,2026-10-15T11:00:11,2.0,LOGIN,Successful prototype login (Food Waste Management)
+164,2026-10-15T11:01:25,1.0,LOGIN,Successful prototype login (Food Waste Management)
+165,2026-10-15T11:14:25,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+166,2026-10-15T11:14:37,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 9, 'Update': 0, 'Discharge': 0, 'Re-admit': 0}"
+167,2026-10-15T11:15:28,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+168,2026-10-15T11:16:45,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+169,2026-10-15T11:17:13,1.0,INTAKE_REAL_RECORDS_ENABLED,Governance approval confirmed
+170,2026-10-15T11:17:15,1.0,INTAKE_REAL_RECORDS_DISABLED,
+171,2026-10-15T11:17:17,1.0,INTAKE_REAL_RECORDS_ENABLED,Governance approval confirmed
+172,2026-10-15T11:17:23,1.0,INTAKE_REAL_RECORDS_DISABLED,
+173,2026-10-15T11:19:37,1.0,INTAKE_REAL_RECORDS_ENABLED,Governance approval confirmed
+174,2026-10-15T11:19:39,1.0,INTAKE_REAL_RECORDS_DISABLED,
+175,2026-10-15T11:19:43,1.0,INTAKE_REAL_RECORDS_ENABLED,Governance approval confirmed
+176,2026-10-15T11:20:04,1.0,INTAKE_REAL_RECORDS_DISABLED,
+177,2026-10-15T11:21:24,1.0,INTAKE_REAL_RECORDS_ENABLED,Governance approval confirmed
+178,2026-10-15T11:25:43,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 24379, 'meals_recorded': 7200, 'items_recorded': 22380}"
+179,2026-10-15T11:26:06,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+180,2026-10-15T11:27:06,1.0,LOGIN,Successful prototype login (Food Waste Management)
+181,2026-10-15T11:28:15,1.0,LOGOUT,User logged out
+182,2026-10-15T11:28:32,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+183,2026-10-15T11:29:59,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+184,2026-10-15T11:30:14,1.0,LOGOUT,User logged out
+185,2026-10-15T11:30:28,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+186,2026-10-15T11:31:13,5.0,LOGOUT,User logged out
+187,2026-10-15T11:31:21,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+188,2026-10-15T11:32:46,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+189,2026-10-15T11:32:58,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+190,2026-10-15T11:33:47,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+191,2026-10-15T11:40:22,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 25323, 'meals_recorded': 7200, 'items_recorded': 23193}"
+192,2026-10-15T11:40:50,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+193,2026-10-15T11:41:09,2.0,LOGIN,Successful prototype login (Food Waste Management)
+194,2026-10-15T11:42:15,1.0,LOGIN,Successful prototype login (Food Waste Management)
+195,2026-10-15T11:42:32,1.0,LOGOUT,User logged out
+196,2026-10-15T11:42:43,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+197,2026-10-15T11:46:40,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+198,2026-10-15T11:47:31,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+199,2026-10-15T11:48:26,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+200,2026-10-15T11:48:32,5.0,RESIDENT_MOVED,"resident 634: room 101 -> 150, area Synthetic Dining Area 1 -> Synthetic Dining Area 1"
+201,2026-10-15T11:48:46,,RESIDENT_MOVED,"resident 634: room 150 -> 101, area Synthetic Dining Area 1 -> Synthetic Dining Area 1"
+202,2026-10-15T11:49:27,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+203,2026-10-15T11:52:51,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+204,2026-10-15T11:55:13,1.0,INTAKE_RECORD,observation 113391
+205,2026-10-15T11:55:17,1.0,INTAKE_RECORD,observation 113392
+206,2026-10-15T11:55:26,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+207,2026-10-15T11:55:57,,RENAME_LOCATIONS,Removed 'Synthetic' from facility and dining area names
+208,2026-10-15T11:57:30,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+209,2026-10-15T12:02:24,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+210,2026-10-15T12:06:48,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+211,2026-10-15T12:08:34,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+212,2026-10-15T12:13:03,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+213,2026-10-15T12:13:15,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 9, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 48}"
+214,2026-10-15T12:14:04,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+215,2026-10-15T12:16:17,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 200, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 48}"
+216,2026-10-16T02:17:20,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+217,2026-10-16T10:34:48,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+218,2026-10-16T10:35:23,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+219,2026-10-16T10:37:20,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+220,2026-10-16T10:37:54,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+221,2026-10-16T10:41:14,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+222,2026-10-16T10:42:33,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+223,2026-10-16T10:43:24,1.0,INTAKE_RECORD,observation 113393
+224,2026-10-16T10:43:32,1.0,INTAKE_RECORD,observation 113394
+225,2026-10-16T10:43:35,1.0,INTAKE_RECORD,observation 113395
+226,2026-10-16T10:43:36,1.0,INTAKE_RECORD,observation 113396
+227,2026-10-16T10:43:37,1.0,INTAKE_RECORD,observation 113397
+228,2026-10-16T10:43:51,1.0,INTAKE_RECORD,observation 113398
+229,2026-10-16T10:44:01,1.0,INTAKE_RECORD,observation 113399
+230,2026-10-16T10:46:15,1.0,INTAKE_RECORD,observation 113400
+231,2026-10-16T10:46:31,1.0,INTAKE_RECORD,observation 113401
+232,2026-10-16T10:46:40,1.0,INTAKE_RECORD,observation 113402
+233,2026-10-16T10:46:56,1.0,INTAKE_RECORD,observation 113403
+234,2026-10-16T10:50:38,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+235,2026-10-16T10:51:57,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+236,2026-10-16T10:52:50,1.0,INTAKE_RECORD,observation 113404
+237,2026-10-16T10:53:00,1.0,INTAKE_RECORD,observation 113405
+238,2026-10-16T10:53:14,1.0,INTAKE_RECORD,observation 113406
+239,2026-10-16T10:53:29,1.0,INTAKE_RECORD,observation 113407
+240,2026-10-16T10:53:44,1.0,INTAKE_RECORD,observation 113408
+241,2026-10-16T10:54:00,1.0,INTAKE_RECORD,observation 113409
+242,2026-10-16T10:54:13,1.0,INTAKE_RECORD,observation 113410
+243,2026-10-16T10:54:37,1.0,INTAKE_RECORD,observation 113411
+244,2026-10-16T11:11:02,1.0,ADD_FACILITY,W
+245,2026-10-16T11:11:02,1.0,ADD_FACILITY,W
+246,2026-10-16T11:12:01,1.0,ADD_FACILITY,dINNING 3
+247,2026-10-16T11:14:32,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+248,2026-10-16T11:16:56,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+249,2026-10-16T11:30:09,,DELETE_FACILITY,W (unused)
+250,2026-10-16T11:30:09,,DELETE_FACILITY,dINNING 3 (unused)
+251,2026-10-16T11:30:30,1.0,LOGIN,Successful prototype login (Food Waste Management)
+252,2026-10-16T11:31:23,1.0,ADD_FACILITY,Harbison Site 3
+253,2026-10-16T11:42:19,,ADD_FACILITY,"Harbison Site 3 (Dining Area 1, Dining Area 2)"
+254,2026-10-16T11:42:51,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+255,2026-10-16T11:44:31,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 20, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 0}"
+256,2026-10-16T11:47:20,1.0,RESIDENT_MOVED,"resident 891: room 506 -> 1254, area Dining Area 1 -> Dining Area 1"
+257,2026-10-16T11:47:32,1.0,RESIDENT_MOVED,"resident 891: room 1254 -> 221, area Dining Area 1 -> Dining Area 1"
+258,2026-10-16T11:47:35,1.0,INTAKE_RECORD,observation 113412
+259,2026-10-16T11:47:39,1.0,INTAKE_RECORD,observation 113413
+260,2026-10-16T11:47:41,1.0,INTAKE_RECORD,observation 113414
+261,2026-10-16T11:47:42,1.0,INTAKE_RECORD,observation 113415
+262,2026-10-16T11:47:47,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+263,2026-10-16T11:47:51,1.0,INTAKE_RECORD,observation 113416
+264,2026-10-16T11:50:10,1.0,RESIDENT_MOVED,"resident 695: room 105 -> 105, area Dining Area 1 -> Dining Area 1"
+265,2026-10-16T11:50:20,1.0,RESIDENT_MOVED,"resident 795: room 105 -> 105, area Dining Area 1 -> Dining Area 1"
+266,2026-10-16T11:50:33,1.0,RESIDENT_MOVED,"resident 795: room 105 -> Nima, area Dining Area 1 -> Dining Area 1"
+267,2026-10-16T11:50:45,1.0,RESIDENT_MOVED,"resident 795: room Nima -> Nima, area Dining Area 1 -> Dining Area 1"
+268,2026-10-16T11:51:01,1.0,RESIDENT_MOVED,"resident 795: room Nima -> 102, area Dining Area 1 -> Dining Area 1"
+269,2026-10-16T11:53:15,1.0,ADD_FACILITY,Harbison Site 4
+270,2026-10-16T12:06:29,,ADD_SERVICE_AREA,"Harbison Site 4: Dining Area 1, Dining Area 2"
+271,2026-10-16T12:09:35,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+273,2026-10-16T12:10:53,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+274,2026-10-16T12:12:03,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 20, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 0}"
+275,2026-10-16T12:12:18,1.0,INTAKE_RECORD,observation 113417
+276,2026-10-16T12:13:05,,DELETE_FACILITY,Harbison Site 3 with its residents and records (requested reset)
+277,2026-10-16T12:13:05,,DELETE_FACILITY,Harbison Site 4 with its residents and records (requested reset)
+278,2026-10-16T12:13:59,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+279,2026-10-16T12:14:33,1.0,ADD_FACILITY,"Harbison Site 3 (Dining Area 1, Dining Area 2)"
+280,2026-10-16T12:16:23,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 10, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 0}"
+281,2026-10-16T14:04:47,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+282,2026-10-16T14:06:37,1.0,INTAKE_RECORD,observation 113418
+283,2026-10-16T14:07:54,1.0,INTAKE_RECORD,observation 113419
+284,2026-10-16T14:07:57,1.0,INTAKE_RECORD,observation 113420
+285,2026-10-16T14:07:59,1.0,INTAKE_RECORD,observation 113421
+286,2026-10-16T14:08:01,1.0,INTAKE_RECORD,observation 113422
+287,2026-10-16T14:08:03,1.0,INTAKE_RECORD,observation 113423
+288,2026-10-16T14:08:04,1.0,INTAKE_RECORD,observation 113424
+289,2026-10-16T14:08:05,1.0,INTAKE_RECORD,observation 113425
+290,2026-10-16T14:08:08,1.0,INTAKE_RECORD,observation 113426
+291,2026-10-16T14:08:11,1.0,INTAKE_RECORD,observation 113427
+292,2026-10-16T14:08:13,1.0,INTAKE_RECORD,observation 113428
+293,2026-10-16T14:09:22,1.0,INTAKE_RECORD,observation 113429
+294,2026-10-16T14:09:53,1.0,INTAKE_CORRECTION,observation 113425 -> 113430: Resident had after their surgery
+295,2026-10-16T14:10:11,1.0,INTAKE_CORRECTION,observation 113428 -> 113431: m
+296,2026-10-16T14:11:47,1.0,INTAKE_RECORD,observation 113432
+297,2026-10-16T14:12:06,1.0,INTAKE_RECORD,observation 113433
+298,2026-10-16T14:12:13,1.0,INTAKE_RECORD,observation 113434
+299,2026-10-16T14:12:14,1.0,INTAKE_RECORD,observation 113435
+300,2026-10-16T14:12:28,1.0,INTAKE_RECORD,observation 113436
+301,2026-10-16T14:12:46,1.0,INTAKE_RECORD,observation 113437
+302,2026-10-16T14:12:49,1.0,INTAKE_RECORD,observation 113438
+303,2026-10-16T14:12:51,1.0,INTAKE_RECORD,observation 113439
+304,2026-10-16T14:12:54,1.0,INTAKE_RECORD,observation 113440
+305,2026-10-16T14:12:58,1.0,INTAKE_RECORD,observation 113441
+306,2026-10-16T14:14:47,5.0,LOGIN,Successful prototype login (Plate Waste Management)
+307,2026-10-16T14:16:55,5.0,INTAKE_RECORD,observation 113442
+308,2026-10-16T14:17:04,5.0,INTAKE_RECORD,observation 113443
+309,2026-10-16T14:18:02,5.0,INTAKE_RECORD,observation 113444
+310,2026-10-16T14:18:41,5.0,INTAKE_RECORD,observation 113445
+311,2026-10-16T14:18:45,5.0,INTAKE_RECORD,observation 113446
+312,2026-10-16T14:18:51,5.0,INTAKE_RECORD,observation 113447
+313,2026-10-16T14:19:03,5.0,INTAKE_RECORD,observation 113448
+314,2026-10-16T14:19:09,5.0,INTAKE_RECORD,observation 113449
+315,2026-10-16T14:19:11,5.0,INTAKE_RECORD,observation 113450
+316,2026-10-16T14:19:12,5.0,INTAKE_RECORD,observation 113451
+317,2026-10-16T14:19:34,5.0,LOGOUT,User logged out
+318,2026-10-16T14:19:45,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+319,2026-10-16T14:22:00,1.0,ADD_FACILITY,"Harbison Site 5 (Dining Area 1, Dining Area 2)"
+320,2026-10-16T14:22:21,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 5, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 0}"
+321,2026-10-16T14:23:02,1.0,RESIDENT_MOVED,"resident 944: room 901 -> 210, area Dining Area 2 -> Dining Area 2"
+322,2026-10-16T14:23:17,1.0,INTAKE_RECORD,observation 113452
+323,2026-10-16T14:23:23,1.0,LOGOUT,User logged out
+324,2026-10-16T14:23:36,1.0,LOGIN,Successful prototype login (Food Waste Management)
+325,2026-10-16T14:42:35,1.0,RESIDENT_MOVED,"resident 795: room 102 -> 102, area Dining Area 1 -> Dining Area 1"
+326,2026-10-16T14:52:01,1.0,INTAKE_RECORD,observation 113453
+327,2026-10-16T14:52:07,1.0,INTAKE_RECORD,observation 113454
+328,2026-10-16T14:52:10,1.0,INTAKE_RECORD,observation 113455
+329,2026-10-16T14:52:16,1.0,INTAKE_RECORD,observation 113456
+330,2026-10-16T14:52:54,1.0,INTAKE_RECORD,observation 113457
+331,2026-10-16T14:55:22,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+332,2026-10-16T14:57:59,1.0,LOGOUT,User logged out
+333,2026-10-16T14:59:17,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+334,2026-10-16T14:59:55,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 0, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 100}"
+335,2026-10-16T15:01:05,,RESTORE_RESIDENTS,Harbison Site 1: re-activated 100 residents removed by the 14:59:55 import
+336,2026-10-16T15:03:20,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+337,2026-10-16T15:06:51,1.0,ADD_FACILITY,"Harbsion Site4 (Dining Area 1, Dining Area 2)"
+338,2026-10-16T15:07:20,1.0,ADD_FACILITY,"Harbison Site 4 (Dining Area 1, Dining Area 2)"
+339,2026-10-16T15:07:25,1.0,IMPORT_RESIDENTS,"fictional_demo: {'New': 20, 'Update': 0, 'Discharge': 0, 'Re-admit': 0, 'Remove (not in file)': 0}"
+340,2026-10-16T15:16:17,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+341,2026-10-19T12:00:22,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+342,2026-10-19T12:07:12,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+343,2026-10-19T12:20:47,1.0,LOGIN,Successful prototype login (Food Waste Management)
+344,2026-10-19T12:21:55,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+345,2026-10-19T12:22:51,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+346,2026-10-19T12:25:29,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+347,2026-10-19T12:26:26,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+348,2026-10-19T12:27:18,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+349,2026-10-19T12:27:28,1.0,ADD_FACILITY,"Test Site Z (Dining Area 1, Dining Area 2)"
+350,2026-10-19T12:28:15,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+351,2026-10-19T12:29:19,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+352,2026-10-19T12:29:39,1.0,DELETE_FACILITY,Test Site Z (backup food_waste_v2.backup_before_delete_site_14_20261019_122939.db)
+353,2026-10-19T12:29:56,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+354,2026-10-19T12:30:07,1.0,ADD_FACILITY,"Test Site Z (Dining Area 1, Dining Area 2)"
+355,2026-10-19T12:31:04,,DELETE_FACILITY,Test Site Z (backup food_waste_v2.backup_before_delete_site_15_20261019_123104.db)
+356,2026-10-19T12:32:02,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+357,2026-10-19T20:48:52,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 20048, 'meals_recorded': 7200, 'items_recorded': 18540}"
+358,2026-10-19T20:49:32,1.0,LOGIN,Successful prototype login (Plate Waste Management)
+359,2026-10-19T21:05:49,1.0,LOGOUT,User logged out
+360,2026-10-19T21:06:04,4.0,LOGIN,Successful prototype login (Plate Waste Management)
+361,2026-10-19T21:06:51,4.0,LOGOUT,User logged out
+362,2026-10-19T21:07:12,1.0,LOGIN,Successful prototype login (Food Waste Management)
+363,2026-10-19T21:15:21,1.0,LOGIN,Successful prototype login (Food Waste Management)
+364,2026-10-19T21:17:07,1.0,CREATE_WASTE_RECORD,Lamb Shepherds Pie 2.00kg
+365,2026-10-19T21:27:51,1.0,LOGOUT,User logged out
+366,2026-10-19T21:28:27,5.0,LOGIN,Successful prototype login (Resident Meal & Consumption Records)
+367,2026-10-19T21:28:38,5.0,LOGOUT,User logged out
+368,2026-10-19T21:28:56,1.0,LOGIN,Successful prototype login (Resident Meal & Consumption Records)
+369,2026-10-19T21:59:43,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 20090, 'meals_recorded': 7200, 'items_recorded': 18417}"
+370,2026-10-19T22:00:29,1.0,LOGIN,Successful prototype login (Food Waste Management)
+371,2026-10-19T22:43:06,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 20090, 'meals_recorded': 7200, 'items_recorded': 18417}"
+372,2026-10-19T22:43:32,1.0,LOGIN,Successful prototype login (Food Waste Management)
+373,2026-10-24T13:51:17,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 23354, 'meals_recorded': 7200, 'items_recorded': 18417}"
+374,2026-10-24T13:57:24,,INTAKE_DEMO_GENERATED,"{'residents': 48, 'orders': 26096, 'meals_recorded': 7200, 'items_recorded': 20624}"
