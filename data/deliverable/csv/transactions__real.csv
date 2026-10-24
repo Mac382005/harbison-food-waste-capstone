@@ -1,0 +1,1 @@
+id,created_at,service_date,facility_id,service_area_id,meal_id,food_item_id,waste_type,prepared_kg,served_kg,waste_kg,waste_percentage,cost_per_kg_snapshot,waste_cost,waste_reason,resident_count,notes,recorded_by,is_demo,menu_variant,menu_component,synthetic_run_id,intake_observation_id

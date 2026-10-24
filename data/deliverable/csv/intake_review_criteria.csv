@@ -1,0 +1,5 @@
+id,code,name,rule_type,threshold,window_days,min_meals,active,approved_by,approval_reference,approved_on,updated_by,updated_at
+1,AVG_LOW_7D,Average observed meal intake at or below 50% over 7 days,avg_intake_below,50.0,7,6,1,,,,,2026-10-08T20:13:27
+2,CONSEC_LOW,3 or more consecutive observed meals at 25% or less,consecutive_low_meals,25.0,7,3,1,,,,,2026-10-08T20:13:27
+3,REFUSALS_7D,3 or more meal refusals in 7 days,refusals_at_least,3.0,7,1,1,,,,,2026-10-08T20:13:27
+4,COMPLETENESS_7D,Fewer than 70% of expected meals documented in 7 days,completeness_below,70.0,7,1,1,,,,,2026-10-08T20:13:27

@@ -1,0 +1,171 @@
+recipe_name,line_order,quantity,unit,ingredient_name,source_document
+Apple Crumble,1,1.4,kg,Apple,FICTIONAL DEMO - NOT HARBISON DATA
+Apple Crumble,2,0.45,kg,Flour,FICTIONAL DEMO - NOT HARBISON DATA
+Apple Crumble,3,0.3,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Beans on Toast,1,0.9,kg,Bread,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Beans on Toast,2,0.6,kg,Eggs,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Beans on Toast,3,0.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Fish with Lemon,1,1.6,kg,White fish,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Fish with Lemon,2,0.6,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Fish with Lemon,3,0.8,kg,Potatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Pears,1,1.9,kg,Pear,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Pears,2,0.18,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Salmon,1,1.6,kg,Salmon fillet,FICTIONAL DEMO - NOT HARBISON DATA
+Baked Salmon,2,0.08,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Meatballs,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Meatballs,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Meatballs,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Meatballs,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stew,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stew,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stew,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stew,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stroganoff,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stroganoff,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stroganoff,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Beef Stroganoff,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Beef and Vegetable Casserole,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Beef and Vegetable Casserole,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Beef and Vegetable Casserole,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Beef and Vegetable Casserole,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Brown Rice,1,1.0,kg,Rice,FICTIONAL DEMO - NOT HARBISON DATA
+Brown Rice,2,0.9,kg,Mixed vegetables,FICTIONAL DEMO - NOT HARBISON DATA
+Brown Rice,3,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Noodle Soup,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Noodle Soup,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Noodle Soup,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Noodle Soup,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Pasta Bake,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Pasta Bake,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Pasta Bake,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Pasta Bake,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Risotto,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Risotto,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Risotto,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Risotto,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Stir-Fry,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Stir-Fry,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Stir-Fry,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken Stir-Fry,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken and Vegetable Soup,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken and Vegetable Soup,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken and Vegetable Soup,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Chicken and Vegetable Soup,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Cottage Pie,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Cottage Pie,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Cottage Pie,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Cottage Pie,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Creamy Mushroom Pasta,1,1.0,kg,Pasta,FICTIONAL DEMO - NOT HARBISON DATA
+Creamy Mushroom Pasta,2,0.55,kg,Cheese,FICTIONAL DEMO - NOT HARBISON DATA
+Creamy Mushroom Pasta,3,0.7,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Creamy Mushroom Pasta,4,0.8,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Creamy Mushroom Pasta,5,0.75,kg,Mushrooms,FICTIONAL DEMO - NOT HARBISON DATA
+Fish Pie,1,1.6,kg,White fish,FICTIONAL DEMO - NOT HARBISON DATA
+Fish Pie,2,0.6,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Fish Pie,3,0.8,kg,Potatoes,FICTIONAL DEMO - NOT HARBISON DATA
+French Toast,1,0.9,kg,Bread,FICTIONAL DEMO - NOT HARBISON DATA
+French Toast,2,0.6,kg,Eggs,FICTIONAL DEMO - NOT HARBISON DATA
+French Toast,3,0.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Fruit Salad,1,1.8,kg,Mixed fruit,FICTIONAL DEMO - NOT HARBISON DATA
+Fruit Salad,2,0.35,kg,Yoghurt,FICTIONAL DEMO - NOT HARBISON DATA
+Garden Salad,1,0.8,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Garden Salad,2,0.6,kg,Spinach,FICTIONAL DEMO - NOT HARBISON DATA
+Garden Salad,3,0.6,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Green Beans,1,1.9,kg,Green beans,FICTIONAL DEMO - NOT HARBISON DATA
+Green Beans,2,0.06,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Lamb Shepherds Pie,1,1.5,kg,Lamb mince,FICTIONAL DEMO - NOT HARBISON DATA
+Lamb Shepherds Pie,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Lamb Shepherds Pie,3,1.2,kg,Potatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Lentil and Vegetable Soup,1,1.2,kg,Pumpkin,FICTIONAL DEMO - NOT HARBISON DATA
+Lentil and Vegetable Soup,2,0.7,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Lentil and Vegetable Soup,3,1.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Lentil and Vegetable Soup,4,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Lentil and Vegetable Soup,5,1.1,kg,Lentils,FICTIONAL DEMO - NOT HARBISON DATA
+Macaroni Cheese,1,1.0,kg,Pasta,FICTIONAL DEMO - NOT HARBISON DATA
+Macaroni Cheese,2,0.55,kg,Cheese,FICTIONAL DEMO - NOT HARBISON DATA
+Macaroni Cheese,3,0.7,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Macaroni Cheese,4,0.8,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Mashed Potato,1,1.9,kg,Potatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Mashed Potato,2,0.35,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Mashed Potato,3,0.08,kg,Butter,FICTIONAL DEMO - NOT HARBISON DATA
+Mild Beef Curry,1,1.5,kg,Beef mince,FICTIONAL DEMO - NOT HARBISON DATA
+Mild Beef Curry,2,0.3,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Mild Beef Curry,3,0.5,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Mild Beef Curry,4,0.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Minestrone Soup,1,1.2,kg,Pumpkin,FICTIONAL DEMO - NOT HARBISON DATA
+Minestrone Soup,2,0.7,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Minestrone Soup,3,1.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Minestrone Soup,4,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Mixed Vegetables,1,1.9,kg,Mixed vegetables,FICTIONAL DEMO - NOT HARBISON DATA
+Mixed Vegetables,2,0.07,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Oatmeal with Berries,1,0.65,kg,Rolled oats,FICTIONAL DEMO - NOT HARBISON DATA
+Oatmeal with Berries,2,1.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Oatmeal with Berries,3,0.75,kg,Berries,FICTIONAL DEMO - NOT HARBISON DATA
+Peach Sponge,1,1.4,kg,Peach,FICTIONAL DEMO - NOT HARBISON DATA
+Peach Sponge,2,0.45,kg,Flour,FICTIONAL DEMO - NOT HARBISON DATA
+Peach Sponge,3,0.3,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Peas and Corn,1,1.0,kg,Peas,FICTIONAL DEMO - NOT HARBISON DATA
+Peas and Corn,2,0.9,kg,Corn,FICTIONAL DEMO - NOT HARBISON DATA
+Porridge with Banana,1,0.65,kg,Rolled oats,FICTIONAL DEMO - NOT HARBISON DATA
+Porridge with Banana,2,1.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Porridge with Banana,3,0.95,kg,Banana,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin Soup,1,1.2,kg,Pumpkin,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin Soup,2,0.7,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin Soup,3,1.5,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin Soup,4,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin and Chickpea Curry,1,1.1,kg,Chickpeas,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin and Chickpea Curry,2,1.2,kg,Pumpkin,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin and Chickpea Curry,3,0.7,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Pumpkin and Chickpea Curry,4,0.08,kg,Herbs and spices,FICTIONAL DEMO - NOT HARBISON DATA
+Rice Pudding,1,1.6,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Rice Pudding,2,0.25,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Rice Pudding,3,0.22,kg,Custard powder,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Carrots,1,1.9,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Carrots,2,0.07,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Chicken,1,1.4,kg,Chicken breast,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Chicken,2,0.25,kg,Onion,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Chicken,3,0.45,kg,Carrot,FICTIONAL DEMO - NOT HARBISON DATA
+Roast Chicken,4,0.4,kg,Stock,FICTIONAL DEMO - NOT HARBISON DATA
+Roasted Pumpkin,1,1.9,kg,Pumpkin,FICTIONAL DEMO - NOT HARBISON DATA
+Roasted Pumpkin,2,0.07,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Scrambled Eggs on Toast,1,1.2,kg,Eggs,FICTIONAL DEMO - NOT HARBISON DATA
+Scrambled Eggs on Toast,2,0.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Scrambled Eggs on Toast,3,0.45,kg,Spinach,FICTIONAL DEMO - NOT HARBISON DATA
+Semolina Pudding,1,1.6,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Semolina Pudding,2,0.25,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Semolina Pudding,3,0.22,kg,Custard powder,FICTIONAL DEMO - NOT HARBISON DATA
+Spinach and Ricotta Pasta,1,1.0,kg,Pasta,FICTIONAL DEMO - NOT HARBISON DATA
+Spinach and Ricotta Pasta,2,0.55,kg,Cheese,FICTIONAL DEMO - NOT HARBISON DATA
+Spinach and Ricotta Pasta,3,0.7,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Spinach and Ricotta Pasta,4,0.8,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Steamed Broccoli,1,1.9,kg,Broccoli,FICTIONAL DEMO - NOT HARBISON DATA
+Steamed Broccoli,2,0.06,kg,Cooking oil,FICTIONAL DEMO - NOT HARBISON DATA
+Sweet Potato Mash,1,1.9,kg,Sweet potato,FICTIONAL DEMO - NOT HARBISON DATA
+Sweet Potato Mash,2,0.35,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Sweet Potato Mash,3,0.08,kg,Butter,FICTIONAL DEMO - NOT HARBISON DATA
+Tuna Mornay,1,1.3,kg,Tuna canned,FICTIONAL DEMO - NOT HARBISON DATA
+Tuna Mornay,2,0.8,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Tuna Mornay,3,0.7,kg,Pasta,FICTIONAL DEMO - NOT HARBISON DATA
+Turkey and Gravy,1,1.6,kg,Turkey,FICTIONAL DEMO - NOT HARBISON DATA
+Turkey and Gravy,2,0.4,kg,Gravy,FICTIONAL DEMO - NOT HARBISON DATA
+Vanilla Custard,1,1.6,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Vanilla Custard,2,0.25,kg,Sugar,FICTIONAL DEMO - NOT HARBISON DATA
+Vanilla Custard,3,0.22,kg,Custard powder,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Frittata,1,1.2,kg,Eggs,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Frittata,2,0.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Frittata,3,0.45,kg,Spinach,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Lasagne,1,1.0,kg,Pasta,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Lasagne,2,0.55,kg,Cheese,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Lasagne,3,0.7,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Lasagne,4,0.8,kg,Tomatoes,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Quiche,1,1.2,kg,Eggs,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Quiche,2,0.5,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Vegetable Quiche,3,0.45,kg,Spinach,FICTIONAL DEMO - NOT HARBISON DATA
+Weet-Bix and Milk,1,0.45,kg,Weet-Bix,FICTIONAL DEMO - NOT HARBISON DATA
+Weet-Bix and Milk,2,2.0,kg,Milk,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt and Muesli,1,1.4,kg,Yoghurt,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt and Muesli,2,0.8,kg,Mixed fruit,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt and Muesli,3,0.35,kg,Muesli,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt with Fruit,1,1.4,kg,Yoghurt,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt with Fruit,2,0.8,kg,Mixed fruit,FICTIONAL DEMO - NOT HARBISON DATA
+Yoghurt with Fruit,3,0.35,kg,Muesli,FICTIONAL DEMO - NOT HARBISON DATA
