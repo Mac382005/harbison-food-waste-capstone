@@ -1,237 +1,315 @@
 # Harbison Food Waste Intelligence — Final Prototype
 
-A Streamlit + SQLite prototype developed for **Harbison Care** to support food-waste recording, resident meal and consumption records, reporting, costing, and forecasting in residential aged care.
+A Streamlit + SQLite prototype developed for **Harbison Care** to support food-waste recording, resident meal and consumption records, reporting, recipe costing and forecasting in residential aged care.
 
-This repository contains the final capstone prototype developed by University of Canberra students for Project **2026-S2-37: Using Food Waste Metrics to Forecast and Address Meal Quality in Residential Aged Care**.
+**University of Canberra — ITS Capstone 9785, Semester 2 2026**  
+**Project 2026-S2-37:** *Using Food Waste Metrics to Forecast and Address Meal Quality in Residential Aged Care*
 
----
-
-## Project Purpose
-
-The prototype was designed to help Harbison:
-
-- record food waste consistently across meal services
-- distinguish production waste from plate waste
-- monitor waste trends through dashboards and reports
-- maintain menu, recipe and costing information
-- record resident meal orders and consumption
-- support future meal-quality and food-waste forecasting
-- provide a foundation that can be extended into a production system
-
-The current system is a **functional prototype / proof of concept**. It is not intended to be deployed directly as a production system containing real resident information without additional security, infrastructure and privacy controls.
+Public repository:  
+**https://github.com/Mac382005/harbison-food-waste-capstone**
 
 ---
 
-## Main Features
+## Project Overview
+
+The prototype provides two connected programs:
 
 ### Food Waste Management
+Supports:
 
-The Food Waste Management program includes:
-
-- waste entry by date, location, meal and food item
-- production waste recording
-- automatic production-waste calculation from:
-  - prepared quantity
-  - served / plated quantity
-- direct kitchen plate-waste recording in kilograms
-- dashboards and reporting
+- production-waste recording
+- directly measured kitchen plate-waste recording
 - transaction history
+- dashboards and reports
 - recipe and ingredient costing
 - ingredient price management
-- supplier comparison reference charts
 - Harbison menu and location management
-- CSV / structured data import
-- ML-based preparation and plate-waste forecasting
-- synthetic-data generation for development and model validation
+- supplier-reference data
+- synthetic-data generation
+- machine-learning forecasting
 
 ### Resident Meal & Consumption Records
+Supports:
 
-The resident component includes:
-
-- resident details and room information
-- dining-area allocation
+- fictional/demo resident records
+- resident room and dining-area information
 - diet / texture information
-- resident meal orders
-- food served to each resident
-- served food weight in grams
-- percentage consumed
-- estimated consumed weight
-- meal reasons and notes
-- resident import template
-- meal and consumption history
+- meal orders
+- served food weight
+- observed intake percentage
+- estimated consumed quantity
+- reasons and notes
+- resident import using the supplied Excel template
 
-Resident consumption records are kept separate from measured kitchen plate-waste records.
+Resident consumption records are kept separate from directly measured kitchen plate-waste records.
 
 ---
 
-## Plate Waste Workflow
+# Quick Start — Fresh Clone
 
-Plate waste is recorded as a **direct kitchen measurement**.
+The following steps create a complete local prototype with synthetic data for demonstration, screenshots and testing.
 
-For each meal service, kitchen staff should:
+## 1. Download the source
 
-1. collect the returned food leftovers from residents included in the selected service
-2. combine the leftovers being measured
-3. weigh the combined returned food
-4. enter the measured value in kilograms into the Plate Waste section
+```powershell
+git clone https://github.com/Mac382005/harbison-food-waste-capstone.git
+cd harbison-food-waste-capstone
+```
 
-Resident consumption percentages are useful for understanding meal acceptance at the individual level, but they are **not automatically treated as measured kitchen plate waste**.
+## 2. Create the Python environment
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+## 3. Verify the installation
+
+Run the automated test suite before starting the application:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+Expected final result:
+
+```text
+46 passed
+```
+
+## 4. Restore the approved Harbison reference files
+
+The working folder `data/private/reference/` is intentionally excluded from Git.
+
+Approved assessment copies are provided in:
+
+```text
+data/deliverable/approved_source_files/data__private/reference/
+```
+
+Create the local reference folder and copy the files:
+
+```powershell
+New-Item -ItemType Directory -Force ".\data\private\reference" | Out-Null
+
+Copy-Item `
+  ".\data\deliverable\approved_source_files\data__private\reference\*" `
+  ".\data\private\reference\" `
+  -Force
+```
+
+This provides the local application with the approved menu, recipe and supplier-reference files.
+
+## 5. Import the Harbison reference data
+
+```powershell
+.\.venv\Scripts\python.exe .\migrate_to_v5_2.py
+```
+
+The final Harbison menu contains **1,442 schedule rows** across the supported menu variants.
+
+## 6. Generate the synthetic demonstration dataset
+
+```powershell
+.\.venv\Scripts\python.exe .\generate_synthetic_data.py `
+  --start 2026-03-01 `
+  --end 2026-10-18 `
+  --seed 42 `
+  --intake-days 30 `
+  --residents-per-area 12
+```
+
+The final validated generation produced:
+
+| Dataset | Final count |
+|---|---:|
+| Harbison menu rows | 1,442 |
+| Synthetic waste transactions | 88,112 |
+| Fictional residents | 48 |
+| Resident meal observations | 7,200 |
+| Resident meal-order rows | 25,143 |
+
+Synthetic records are for development, demonstration and ML validation only. They are **not real Harbison operational outcomes**.
+
+## 7. Run the prototype
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Streamlit normally opens at:
+
+```text
+http://localhost:8501
+```
 
 ---
 
-## Production Waste Workflow
+# Demo Accounts
+
+For prototype demonstration only:
+
+| Role | Username | Password |
+|---|---|---|
+| Administrator | `admin` | `Admin123!` |
+| Foodservice Manager | `manager` | `Manager123!` |
+| Kitchen Staff | `kitchen` | `Kitchen123!` |
+| Dietitian / Analyst | `dietitian` | `Dietitian123!` |
+| Care Worker | `care` | `Care123!` |
+
+These are demonstration credentials and must be replaced before any production deployment.
+
+For reviewing the complete prototype, use:
+
+```text
+admin / Admin123!
+```
+
+---
+
+# Food-Waste Workflows
+
+## Production Waste
 
 Production waste represents food that was prepared but not served.
 
-The system calculates:
+The prototype calculates:
 
 ```text
 Production Waste = Prepared Quantity - Served / Plated Quantity
 ```
 
-Staff enter the prepared and served quantities, and the prototype calculates the production-waste amount automatically.
+Staff enter prepared and served quantities and the system calculates the waste amount and percentage.
+
+## Plate Waste
+
+Plate waste is recorded as a **direct kitchen measurement**.
+
+Kitchen staff:
+
+1. collect returned leftovers from the selected meal service;
+2. combine the leftovers being measured;
+3. weigh the returned food;
+4. enter the measured total in kilograms.
+
+Resident intake percentages are **not automatically converted into measured plate-waste kilograms**.
+
+This keeps individual meal-consumption observations separate from kitchen waste measurements.
 
 ---
 
-## Data Sources
+# Dashboard, Reports and Forecasting
 
-The prototype currently supports two clearly separated data sources:
+The prototype includes:
 
-### Real Data
+- total production and plate waste
+- waste trends over time
+- meal-service comparisons
+- location/service-area analysis
+- food items with high waste
+- plate-waste KPI monitoring
+- preparation forecasting
+- expected plate-waste forecasting
 
-Real data includes records entered or imported from Harbison operational use.
+Forecasting uses a **time-based holdout** rather than a random train/test split.
 
-Where approved and available, the prototype also uses Harbison reference information such as:
-
-- Autumn/Winter 2026 four-week menu
-- Regular, Soft & Bite-Sized, Minced & Moist and Pureed menu variants
-- 12 Harbison soup recipes
-- 2 selected dessert recipes with sufficiently clear serving and yield information
-- supplier comparison covering 288 products
-- confirmed ingredient pricing where available
-
-### Synthetic Data
-
-Synthetic data is used for:
-
-- development
-- testing
-- dashboard demonstration
-- resident workflow demonstration
-- machine-learning development
-- forecasting validation
-
-Synthetic records are explicitly separated from real operational records.
-
-The application does not intentionally combine real and synthetic records into a single reporting source.
+The current model evaluation is based on synthetic development data and demonstrates the forecasting workflow only. It must not be interpreted as validated Harbison operational performance.
 
 ---
 
-## Synthetic Data Generation
+# Final Assessment Data
 
-Synthetic data is generated through one supported workflow:
+The final assessment dataset is available at:
 
-```powershell
-python generate_synthetic_data.py --start 2026-03-01 --end 2026-10-18 --seed 42 --intake-days 30 --residents-per-area 12
+```text
+data/deliverable/
 ```
 
-The generator creates:
+Important contents include:
 
-- menu-aligned food-waste records
-- resident demand
-- preparation quantities
-- production-waste records
-- plate-waste patterns
-- fictional resident meal and consumption records
+```text
+data/deliverable/
+├── DATA_README.md
+├── DATABASE_TABLE_SUMMARY.csv
+├── MANIFEST.csv
+├── csv/
+├── approved_source_files/
+└── templates/
+```
 
-The synthetic food-waste data follows the structure of the imported Harbison four-week menu while adding controlled variation for model development.
+Final exported database state includes:
 
-Synthetic records must not be interpreted as actual Harbison operational outcomes.
+| Item | Count |
+|---|---:|
+| Menu schedule rows | 1,442 |
+| Food items | 478 |
+| Supplier products | 272 |
+| Costing recipes | 53 |
+| Sponsor recipe records | 64 |
+| Recipe ingredient rows | 170 |
+| Synthetic waste transactions | 88,112 |
+| Real waste transactions | 0 |
+| Fictional residents | 48 |
+| Real residents | 0 |
+| Resident meal observations | 7,200 |
+| Resident meal orders | 25,143 |
 
----
-
-## Forecasting
-
-The forecasting component includes two main prediction tasks:
-
-### Preparation Quantity Forecast
-
-Predicts expected food preparation quantity in kilograms.
-
-### Plate-Waste / Meal-Quality Forecast
-
-Predicts expected plate-waste percentage as an indication of likely meal acceptance and food-waste risk.
-
-Model inputs may include:
-
-- food item
-- food category
-- meal
-- menu component
-- location
-- menu type
-- resident count
-- day/date context
-- historical synthetic or available operational patterns
-
-Model evaluation uses time-based validation rather than random train/test splitting.
-
-Forecast results generated from synthetic data demonstrate the modelling workflow only and should not be presented as validated Harbison operational performance.
+`MANIFEST.csv` contains file sizes and SHA-256 hashes for the assessment data bundle.
 
 ---
 
-## Supplier Data
+# Data Sources and Interpretation
 
-The Harbison supplier comparison contains approximately **288 products** and is retained for reference and price-comparison visualisation.
+The repository contains three different types of information that should not be confused.
 
-The prototype does **not**:
+### Sponsor / reference data
+Includes the approved Harbison menu, recipe and supplier-reference information used to build the prototype.
 
-- automatically recommend suppliers
-- treat supplier comparison data as purchase history
-- automatically match every supplier product to recipes
-- automatically apply supplier quotes to ingredient costing
+### Synthetic data
+Generated specifically for:
 
-Supplier information is therefore presented as reference data rather than a procurement recommendation system.
+- software development
+- demonstration
+- dashboard testing
+- resident workflow testing
+- machine-learning development and validation
+
+### Real operational data
+The final public assessment dataset contains **no real waste transactions and no real resident records**.
+
+Real operational information should only be added in an approved secure Harbison environment.
 
 ---
 
-## Recipe and Ingredient Costing
+# Recipe and Costing Data
 
-Validated recipe data currently includes:
+The prototype stores sponsor/reference recipe information and ingredient-level costing data.
 
-- 12 Harbison soup recipes
-- 2 selected dessert recipes
-- ingredient-level recipe information
-- confirmed price mappings where sufficient information is available
-
-Automatic costing is only performed where unit information and pricing are considered sufficiently reliable.
-
-Numeric `kg`, `L` and `each` quantities can be mapped more safely.
+Automatic costing is only used where quantity, unit and price information are sufficiently reliable.
 
 Units such as:
 
-- cups
-- tins
-- bunches
-- spoons
-- boxes
-- unspecified quantities
+- kg
+- L
+- each
 
-may require manual confirmation or conversion before being used for reliable costing.
+can be mapped directly where appropriate.
 
-The application avoids presenting unknown ingredient costs as confirmed `$0` values.
+Unclear quantities or kitchen-specific units should be confirmed before they are used for operational costing.
+
+Unknown costs are not intentionally presented as confirmed `$0` values.
 
 ---
 
-## Resident Import Template
+# Resident Import
 
-A blank resident import template is provided at:
+A blank Excel template is available at:
 
 ```text
 data/templates/Harbison_Resident_Import_Template.xlsx
 ```
 
-The template contains the supported fields:
+Supported fields include:
 
 - Resident ID
 - Name
@@ -240,17 +318,81 @@ The template contains the supported fields:
 - Diet
 - Status
 
-The facility/site is selected within the application before import and therefore does not need to be duplicated in the spreadsheet.
+The site/facility is selected in the application before the file is imported.
 
-Completed resident files may contain personal information and should be stored only in approved private locations.
+Any completed file containing real resident information should be stored only in an approved private environment.
 
 ---
 
-## Privacy and Data Handling
+# Project Structure
 
-Private Harbison operational files and resident information must not be committed to the source repository.
+```text
+harbison-food-waste-capstone/
+│
+├── app.py
+├── requirements.txt
+├── generate_synthetic_data.py
+├── prepare_assessment_data.py
+│
+├── data/
+│   ├── templates/
+│   └── deliverable/
+│       ├── DATA_README.md
+│       ├── DATABASE_TABLE_SUMMARY.csv
+│       ├── MANIFEST.csv
+│       ├── csv/
+│       ├── approved_source_files/
+│       └── templates/
+│
+├── src/
+├── views/
+├── tests/
+└── docs/
+```
 
-The project `.gitignore` excludes locations such as:
+Key areas:
+
+- `app.py` — Streamlit application entry point
+- `src/` — database, analytics, forecasting, imports and business logic
+- `views/` — Streamlit pages
+- `tests/` — automated test suite
+- `data/templates/` — blank import templates
+- `data/deliverable/` — final assessment datasets and approved reference files
+
+---
+
+# Testing and Quality Assurance
+
+Run:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+Final validated result:
+
+```text
+46 passed
+```
+
+Quality assurance also included:
+
+- repeated sponsor review and workflow refinement
+- real/synthetic data separation
+- database migration and integrity checks
+- terminology cleanup from patient to resident
+- final dataset/export checks
+- Git feature branches and pull-request integration
+- final clean `main` branch
+- review of reference-data provenance and costing limitations
+
+---
+
+# Privacy and Security
+
+The prototype is a university proof of concept.
+
+The repository excludes working locations such as:
 
 ```text
 data/private/
@@ -262,192 +404,59 @@ data/import/
 .env
 ```
 
-Real resident records, production databases and confidential sponsor files should remain in approved private storage.
+Credential/password fields in assessment CSV exports are redacted.
 
-Synthetic resident records used for development are fictional and must remain clearly identified as synthetic.
+Before use with real resident information, Harbison should implement appropriate:
 
----
-
-## Installation
-
-### Requirements
-
-Recommended environment:
-
-- Python 3.11+
-- Windows 10/11 or compatible operating system
-- Streamlit
-- Pandas
-- Plotly
-- scikit-learn
-- NumPy
-- openpyxl
-- pytest
-
-Install dependencies:
-
-```powershell
-pip install -r requirements.txt
-```
-
----
-
-## Running the Prototype
-
-From the project directory:
-
-```powershell
-python -m streamlit run app.py
-```
-
-Streamlit will normally open the application at:
-
-```text
-http://localhost:8501
-```
-
----
-
-## Testing
-
-Run the automated test suite with:
-
-```powershell
-python -m pytest -q
-```
-
-The final prototype test suite contains **46 automated tests** covering major functionality including resident import, intake records, location handling and menu workbook processing.
-
-The final validated project version passed:
-
-```text
-46 passed
-```
-
----
-
-## Project Structure
-
-Key folders and files include:
-
-```text
-app.py
-requirements.txt
-
-src/
-    analytics.py
-    auth.py
-    db.py
-    forecasting.py
-    intake.py
-    intake_db.py
-    intake_excel.py
-    locations.py
-    menu_workbook.py
-    resident_choices.py
-    resident_import.py
-    synthetic_data.py
-    synthetic_intake.py
-    textures.py
-
-views/
-    dashboard.py
-    reports.py
-    forecasting_page.py
-    record_waste.py
-    import_residents.py
-    plate_waste.py
-    reasons_notes.py
-    sponsor_data.py
-    synthetic_ml.py
-
-data/
-    templates/
-
-docs/
-    RESIDENT_MEAL_CONSUMPTION_RECORDS.md
-
-tests/
-
-generate_synthetic_data.py
-import_menu_workbook.py
-migrate_to_v7_intake.py
-migrate_to_v7_2_measured_waste.py
-migrate_to_v7_3_final_cleanup.py
-```
-
----
-
-## Handover
-
-A separate sponsor handover package has been prepared for Harbison containing:
-
-- Start Here guide
-- User Guide
-- Technical Handover Guide
-- clean application source
-- resident import template
-- setup and run instructions
-- future development guidance
-- GitHub repository information
-
-The GitHub repository provides the maintained source-code history for future technical teams.
-
-Repository:
-
-```text
-https://github.com/Mac382005/harbison-food-waste-capstone
-```
-
----
-
-## Production Deployment Considerations
-
-The current system should be treated as a prototype.
-
-Before operational use with real resident data, Harbison should consider:
-
-- production authentication
-- formal role-based access control
+- secure authentication
+- role-based access control
 - secure hosted database infrastructure
-- database backup and recovery
-- encryption and secure storage
+- backup and recovery
 - audit logging
-- privacy and organisational governance review
+- privacy and data-retention controls
+- organisational approval
 - user acceptance testing
-- integration with existing Harbison systems
-- deployment and maintenance ownership
-- data-retention requirements
-- ongoing model validation using real operational data
-
-SQLite and the current prototype login system are appropriate for demonstrating the solution but should be replaced or strengthened for a production deployment.
 
 ---
 
-## Final Prototype Status
+# Production Status
 
-The final prototype demonstrates an end-to-end workflow covering:
+This system is a **functional prototype / proof of concept**, not a production clinical or operational system.
 
-**Menu and reference data → resident meal records → food-waste entry → costing → dashboards and reports → synthetic-data development → ML forecasting → sponsor handover**
+Recommended next steps are:
 
-The project provides Harbison with a working foundation that can be retained, evaluated and extended by a future software or IT team.
+1. pilot the waste-recording workflow in a controlled service area;
+2. establish a consistent measurement protocol;
+3. collect sufficient real food-waste history;
+4. retrain and evaluate forecasting models using real operational data;
+5. strengthen authentication, infrastructure, privacy and backup controls;
+6. assign ownership for menu, recipe, price and location maintenance.
 
 ---
 
-## Academic Project
+# Project Team
 
-Developed as part of:
-
-**9785 ITS Capstone Project**  
-University of Canberra  
+University of Canberra — ITS Capstone 9785  
 Semester 2, 2026
 
-Project:
+**Project 2026-S2-37**  
+*Using Food Waste Metrics to Forecast and Address Meal Quality in Residential Aged Care*
 
-**Using Food Waste Metrics to Forecast and Address Meal Quality in Residential Aged Care**
+Industry Sponsor: **Harbison Care**
 
-Industry Sponsor:
+Team:
 
-**Harbison Care**
+- Hoang Nhat Minh Mac
+- Tri Le
+- Nima Tshering
+- Lyn Nguyen
 
-This repository contains a university capstone prototype and should not be interpreted as a production clinical, dietary or operational information system.
+---
+
+## Final Deliverable Status
+
+The final prototype demonstrates the complete workflow:
+
+**Harbison reference data → resident meal records → waste recording → costing → dashboards and reports → synthetic-data development → ML forecasting → sponsor handover**
+
+The repository contains the working prototype, final assessment datasets, templates, automated tests and documentation required to review and continue the project.
